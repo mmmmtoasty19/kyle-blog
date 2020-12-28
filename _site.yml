@@ -3,11 +3,12 @@ title: "Kyle Belanger"
 description: |
   Blog for the research of Kyle Belanger
 output_dir: "_site"
-base_url: ""
+base_url: "https://kyleb.rbind.io"
 navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "Blog"
       href: about.html
 output: distill::distill_article
+exclude: ["README.md"]
