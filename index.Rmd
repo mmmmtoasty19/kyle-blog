@@ -12,6 +12,7 @@ links:
     url: "mailto:email@email.com"
 output:
   postcards::trestles
+site: distill::distill_website
 ---
  
 ## Bio

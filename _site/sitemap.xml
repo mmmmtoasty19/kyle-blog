@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
+  <url>
+    <loc>https://kyleb.rbind.io/blog.html</loc>
+    <lastmod>2020-12-28T18:53:27-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kyleb.rbind.io/</loc>
+    <lastmod>2020-12-28T18:54:34-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kyleb.rbind.io/posts/2020-12-28-testpost/</loc>
+    <lastmod>2020-12-28T18:58:16-05:00</lastmod>
+  </url>
+  <url>
+    <loc>https://kyleb.rbind.io/posts/welcome/</loc>
+    <lastmod>2020-12-28T18:49:26-05:00</lastmod>
+  </url>
+</urlset>

@@ -9,6 +9,6 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Blog"
-      href: about.html
+      href: blog.html
 output: distill::distill_article
 exclude: ["README.md"]

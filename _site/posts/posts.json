@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2020-12-28-testpost/",
+    "title": "test_post",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Nora Jones",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-12-28",
+    "categories": [],
+    "contents": "\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2020-12-28T18:58:16-05:00",
+    "input_file": "testpost.utf8.md"
+  },
+  {
     "path": "posts/welcome/",
     "title": "Welcome to Kyle Belanger",
     "description": "Welcome to our new blog, Kyle Belanger. We hope you enjoy \nreading what we have to say!",
@@ -13,7 +30,7 @@
     "categories": [],
     "contents": "\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2020-12-27T19:14:42-05:00",
+    "last_modified": "2020-12-28T18:49:26-05:00",
     "input_file": {}
   }
 ]
