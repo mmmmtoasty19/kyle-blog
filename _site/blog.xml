@@ -7,7 +7,17 @@
     <description>Blog for the research of Kyle Belanger
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Diabetes in Rural North Carolina : Exploring Prevalence Trends</title>
+      <dc:creator>Kyle Belanger</dc:creator>
+      <link>https://kyleb.rbind.io/posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends</link>
+      <description>&lt;p&gt;This post introduces the exploration of the Diabetes epidemic in North Carolina&lt;/p&gt;
+</description>
+      <guid>https://kyleb.rbind.io/posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends</guid>
+      <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://kyleb.rbind.io/posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends/diabetes-in-rural-north-carolina-exploring-prevalence-trends_files/figure-html5/o-g1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Basic Exploration of WHO Tuberculosis Data</title>
       <dc:creator>Kyle Belanger</dc:creator>
