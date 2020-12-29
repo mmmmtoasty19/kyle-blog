@@ -17,6 +17,7 @@ repository_url: https://github.com/mmmmtoasty19/kyle-blog
 collections:
   posts:
     share: [twitter, linkedin, facebook]
+    authors_metadata: FALSE
 twitter:
   site: "@WKyleB"
   creator: "@WKyleB"
