@@ -7,7 +7,16 @@
     <description>Blog for the research of Kyle Belanger
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 25 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 25 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Diabetes in Rural North Carolina : Data Collection and Cleaning</title>
+      <dc:creator>Kyle Belanger</dc:creator>
+      <link>https://kyleb.rbind.io/posts/2020-12-29-diabetes-in-rural-north-carolina-data-collection-and-cleaning</link>
+      <description>&lt;p&gt;This is the second post in the series exploring Diabetes in rural North Carolina.  This post will explore the data used for this project, from collection, cleaning, and analysis ready data.&lt;/p&gt;
+</description>
+      <guid>https://kyleb.rbind.io/posts/2020-12-29-diabetes-in-rural-north-carolina-data-collection-and-cleaning</guid>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Diabetes in Rural North Carolina : Exploring Prevalence Trends</title>
       <dc:creator>Kyle Belanger</dc:creator>
@@ -17,6 +26,15 @@
       <guid>https://kyleb.rbind.io/posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends</guid>
       <pubDate>Thu, 25 Jun 2020 00:00:00 +0000</pubDate>
       <media:content url="https://kyleb.rbind.io/posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends/diabetes-in-rural-north-carolina-exploring-prevalence-trends_files/figure-html5/o-g1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Importing Excel Data with Multiple Header Rows</title>
+      <dc:creator>Kyle Belanger</dc:creator>
+      <link>https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows</link>
+      <description>&lt;p&gt;A solution for importing Excel Data that contains two header rows.&lt;/p&gt;
+</description>
+      <guid>https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows</guid>
+      <pubDate>Mon, 22 Jun 2020 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>Basic Exploration of WHO Tuberculosis Data</title>

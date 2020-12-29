@@ -12,3 +12,4 @@ navbar:
       href: blog.html
 output: distill::distill_article
 exclude: ["README.md"]
+creative_commons: CC BY-SA
