@@ -7,7 +7,17 @@
     <description>Blog for the research of Kyle Belanger
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 10 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Basic Exploration of WHO Tuberculosis Data</title>
+      <dc:creator>Kyle Belanger</dc:creator>
+      <link>https://kyleb.rbind.io/posts/2020-12-28-basic-exploration-of-who-tuberculosis-data</link>
+      <description>&lt;p&gt;Today I am going to dive into some real life data from the World Health Organization (WHO), exploring new and relapse cases of Tuberculosis.  I clean up the data, and then make a few graphs to explore different variables.&lt;/p&gt;
+</description>
+      <guid>https://kyleb.rbind.io/posts/2020-12-28-basic-exploration-of-who-tuberculosis-data</guid>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://kyleb.rbind.io/posts/2020-12-28-basic-exploration-of-who-tuberculosis-data/basic-exploration-of-who-tuberculosis-data_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Line Graphs and Interactivity</title>
       <dc:creator>Kyle Belanger</dc:creator>
