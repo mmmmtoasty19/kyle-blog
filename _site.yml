@@ -21,3 +21,4 @@ collections:
 twitter:
   site: "@WKyleB"
   creator: "@WKyleB"
+theme: site-theme.css
