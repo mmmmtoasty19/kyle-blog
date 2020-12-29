@@ -7,25 +7,16 @@
     <description>Blog for the research of Kyle Belanger
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2020 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>test_post</title>
-      <dc:creator>Nora Jones</dc:creator>
-      <link>https://kyleb.rbind.io/posts/2020-12-28-testpost</link>
-      <description>&lt;p&gt;A short description of the post.&lt;/p&gt;
+      <title>My Start to R</title>
+      <dc:creator>Kyle Belanger</dc:creator>
+      <link>https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r</link>
+      <description>&lt;p&gt;A short introduction to my blog, and R journey.&lt;/p&gt;
 </description>
-      <guid>https://kyleb.rbind.io/posts/2020-12-28-testpost</guid>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Welcome to Kyle Belanger</title>
-      <dc:creator>Nora Jones</dc:creator>
-      <link>https://kyleb.rbind.io/posts/welcome</link>
-      <description>&lt;p&gt;Welcome to our new blog, Kyle Belanger. We hope you enjoy 
-reading what we have to say!&lt;/p&gt;
-</description>
-      <guid>https://kyleb.rbind.io/posts/welcome</guid>
-      <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r</guid>
+      <pubDate>Fri, 24 Jan 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
   </channel>
 </rss>

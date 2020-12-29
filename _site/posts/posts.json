@@ -1,36 +1,21 @@
 [
   {
-    "path": "posts/2020-12-28-testpost/",
-    "title": "test_post",
-    "description": "A short description of the post.",
+    "path": "posts/2020-12-28-my-start-to-r/",
+    "title": "My Start to R",
+    "description": "A short introduction to my blog, and R journey.",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Kyle Belanger",
+        "url": {}
       }
     ],
-    "date": "2020-12-28",
+    "date": "2020-01-24",
     "categories": [],
-    "contents": "\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2020-12-28T18:58:16-05:00",
-    "input_file": "testpost.utf8.md"
-  },
-  {
-    "path": "posts/welcome/",
-    "title": "Welcome to Kyle Belanger",
-    "description": "Welcome to our new blog, Kyle Belanger. We hope you enjoy \nreading what we have to say!",
-    "author": [
-      {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
-      }
-    ],
-    "date": "2020-12-27",
-    "categories": [],
-    "contents": "\r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2020-12-28T18:49:26-05:00",
-    "input_file": {}
+    "contents": "\r\n\r\nContents\r\nLoad Libraries\r\nImport Data\r\nClean Data Names\r\nConvert Data to ‘Long Form’\r\nGraph 5.1\r\n\r\nToday starts my attempt at sharing my R journey with the world! I have been learning R off and on now since late 2019, I have begun to take it much more serious as I work through my Data Analytics class at UCF. My love for all things numbers and graphs has really blossomed, and I am choosing to share that love with anyone who cares to read. I will not claim to be the best at R, or any programming for that matter, but these are my attempts. Each post in this serious will be replicated a graph created in Tableau from the book Tableau for Healthcare. Todays graph is a simple horizontal bar chart, in transferring to both a new blog site and computer I have unfortunately lost the original bar graph, but trust me the one I created looks just like it.\r\nLoad Libraries\r\n\r\n\r\nlibrary(tidyr)\r\nlibrary(magrittr)\r\nlibrary(ggplot2)\r\nlibrary(stringr)\r\nlibrary(dplyr)\r\n\r\n\r\n\r\nImport Data\r\n\r\n\r\nds <- readxl::read_excel(\r\n    path   = \"Tableau 10 Training Practice Data.xlsx\" \r\n    ,sheet = \"02 - Patient Falls-Single Hosp\"\r\n    )\r\n\r\n\r\n\r\nClean Data Names\r\n\r\n\r\n#should make reusable forumla at later time\r\nnames(ds) <- tolower(names(ds))\r\nnames(ds) <- str_replace_all(names(ds),\" \", \"_\")\r\n\r\n\r\n\r\nConvert Data to ‘Long Form’\r\n\r\n\r\nds1 <- ds %>% \r\n  gather(\"patient_falls_no_injury_rate\" , \"patient_falls_with_injury_rate\"\r\n         ,key   = \"injury\" \r\n         ,value = \"rate\" ) %>% \r\n  mutate(injury = (injury == \"patient_falls_with_injury_rate\"))\r\n\r\n\r\n\r\nGraph 5.1\r\n\r\n\r\nb1 <- ds %>% \r\n  ggplot(mapping = aes(x = reorder(type_of_care,total_patient_falls_rate ) , y = total_patient_falls_rate)) +\r\n  geom_col(fill = \"#2b83ba\") + \r\n  coord_flip() +\r\n  scale_y_continuous(breaks = NULL) +\r\n  theme(axis.ticks = element_blank()) +\r\n  labs(title = \"Rate of Patient Falls (per 1,000 Pateint Days)\\nby Type of Care for FY2017\"\r\n      ,x     = NULL\r\n      ,y     = NULL\r\n      ) +\r\n  theme_classic() +\r\n  geom_text(aes(label = format(total_patient_falls_rate, digits = 2)), nudge_y = -.25, color = \"white\")\r\n  \r\nb1\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png",
+    "last_modified": "2020-12-28T21:58:03-05:00",
+    "input_file": "my-start-to-r.utf8.md",
+    "preview_width": 1248,
+    "preview_height": 768
   }
 ]

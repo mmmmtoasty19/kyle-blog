@@ -1,15 +1,15 @@
 ---
-title: "Frank Hermosillo"
-image: "frank.jpg"
+title: "Kyle Belanger"
+image: "kyle.jpg"
 links:
   - label: LinkedIn
-    url: "https://linkedin.com/"
+    url: "https://https://www.linkedin.com/in/kyle-belanger-4b3a04a0/"
   - label: Twitter
-    url: "https://twitter.com/"
+    url: "https://https://twitter.com/WKyleB"
   - label: GitHub
-    url: "https://github.com/"
+    url: "https://https://github.com/mmmmtoasty19"
   - label: Email
-    url: "mailto:email@email.com"
+    url: "mailto:wkbelanger0526@email.campbell.edu"
 output:
   postcards::trestles
 site: distill::distill_website
@@ -17,25 +17,24 @@ site: distill::distill_website
  
 ## Bio
 
-Frank Hermosillo studies neural networks and their applications at Google 
-Brain. His research focuses on differentiable network pruning approximation and 
-decentralized gradient inversion mechanics. He frequently collaborates with 
-researchers who study machine learning, computer vision, and cognitive science.
-His work has been featured in WIRED, The Atlantic, Newsweek, and The New York 
-Times Magazine.
+I am an Application Specialist at Roche Diagnostics, where I work with customers doing both training and assisting with any issues on their instruments. I have picked up a basis in both Python and R in my free time, and my love for numbers is growing. My goal is to keep learning and see where the numbers take me!
 
 ## Education
 
-**Massachusetts Institute of Technology** | Cambridge, MA
+**Campbell University** | Buies Creek, NC
 
-Ph.D. in Computer Science | September 2009 - May 2014
+Doctorate of Health Sciences | August 2020 - Present
 
-**The University of California, Berkeley** | Berkeley, CA
+**University of Central Florida** | Orlando, FL
 
-B.S. in Computer Science | September 2005 - May 2009
+M.S. in Healthcare Informatics | August 2018 - May 2020
+
+**Western Carolina University** | Cullowhee, NC
+
+B.S. in Clinical Laboratory Science | August 2005 - May 2009
 
 ## Experience
 
-**Google Brain** | Principal Investigator | January 2018 - Present
+**Roche Diagnostics** | Field Application Specialist | July 2012 - Present
 
-**Netflix** | Research Scientist | June 2014 - December 2017
+**Cape Fear Valley Hospital** | Medical Laboratory Scientist | June 2009 - July 2012
