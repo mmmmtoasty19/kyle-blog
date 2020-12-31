@@ -10,6 +10,8 @@ navbar:
       href: index.html
     - text: "Blog"
       href: blog.html
+    - text: "CV"
+      href: pdfs/WKB.pdf
 output: distill::distill_article
 exclude: ["README.md"]
 creative_commons: CC BY-SA
