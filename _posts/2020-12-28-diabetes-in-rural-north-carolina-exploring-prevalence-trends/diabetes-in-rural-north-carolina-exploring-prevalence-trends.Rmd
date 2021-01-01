@@ -17,7 +17,7 @@ creative_commons: CC BY-SA
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, R.options = list(width = 80))
 ```
 
 ```{r, echo=FALSE}
