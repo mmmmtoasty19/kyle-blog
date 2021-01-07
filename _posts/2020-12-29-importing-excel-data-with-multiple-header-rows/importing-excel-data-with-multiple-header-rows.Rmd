@@ -10,6 +10,7 @@ output:
   distill::distill_article:
     self_contained: false
     toc: TRUE
+    code_folding: true
 creative_commons: CC BY-SA
 ---
 
