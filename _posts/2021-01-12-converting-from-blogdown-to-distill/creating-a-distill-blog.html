@@ -49,74 +49,72 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  background-color: #f8f8f8; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ad0000; } /* Alert */
-code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
-code span.bn { color: #ad0000; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
-code span.ch { color: #20794d; } /* Char */
-code span.cn { color: #8f5902; } /* Constant */
-code span.co { color: #5e5e5e; } /* Comment */
-code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-code span.dt { color: #ad0000; } /* DataType */
-code span.dv { color: #ad0000; } /* DecVal */
-code span.er { color: #ad0000; } /* Error */
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #ad0000; } /* Float */
-code span.fu { color: #4758ab; } /* Function */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
-code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
-code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
-code span.ss { color: #20794d; } /* SpecialString */
-code span.st { color: #20794d; } /* String */
-code span.va { color: #111111; } /* Variable */
-code span.vs { color: #20794d; } /* VerbatimString */
-code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Importing Excel Data with Multiple Header Rows</title>
+  <title>Converting From Blogdown to Distill</title>
 
-  <meta property="description" itemprop="description" content="A solution for importing Excel Data that contains two header rows."/>
+  <meta property="description" itemprop="description" content="A meta post on transferring from a blogdown to distill blog site"/>
 
-  <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2020-06-22"/>
-  <meta property="article:created" itemprop="dateCreated" content="2020-06-22"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-01-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-01-12"/>
   <meta name="article:author" content="Kyle Belanger"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Importing Excel Data with Multiple Header Rows"/>
+  <meta property="og:title" content="Converting From Blogdown to Distill"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A solution for importing Excel Data that contains two header rows."/>
+  <meta property="og:description" content="A meta post on transferring from a blogdown to distill blog site"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Importing Excel Data with Multiple Header Rows"/>
-  <meta property="twitter:description" content="A solution for importing Excel Data that contains two header rows."/>
+  <meta property="twitter:title" content="Converting From Blogdown to Distill"/>
+  <meta property="twitter:description" content="A meta post on transferring from a blogdown to distill blog site"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","creative_commons"]}},"value":[{"type":"character","attributes":{},"value":["Importing Excel Data with Multiple Header Rows"]},{"type":"character","attributes":{},"value":["A solution for importing Excel Data that contains two header rows.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kyle Belanger"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["06-22-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["CC BY-SA"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Converting From Blogdown to Distill"]},{"type":"character","attributes":{},"value":["A meta post on transferring from a blogdown to distill blog site\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kyle Belanger"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["01-12-2021"]},{"type":"character","attributes":{},"value":["Distill"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","highlight"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tango"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["example_data.xlsx","example_data_img1.png","importing-excel-data-with-multiple-header-rows_files/anchor-4.2.2/anchor.min.js","importing-excel-data-with-multiple-header-rows_files/bowser-1.9.3/bowser.min.js","importing-excel-data-with-multiple-header-rows_files/distill-2.2.21/template.v2.js","importing-excel-data-with-multiple-header-rows_files/header-attrs-2.6.4/header-attrs.js","importing-excel-data-with-multiple-header-rows_files/jquery-1.11.3/jquery.min.js","importing-excel-data-with-multiple-header-rows_files/popper-2.6.0/popper.min.js","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy-bundle.umd.min.js","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy-light-border.css","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.css","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.umd.min.js","importing-excel-data-with-multiple-header-rows_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"NULL"}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1434,16 +1432,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="importing-excel-data-with-multiple-header-rows_files/header-attrs-2.6.4/header-attrs.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/jquery-1.11.3/jquery.min.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/popper-2.6.0/popper.min.js"></script>
-  <link href="importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="importing-excel-data-with-multiple-header-rows_files/distill-2.2.21/template.v2.js"></script>
+  <script src="creating-a-distill-blog_files/header-attrs-2.6.4/header-attrs.js"></script>
+  <script src="creating-a-distill-blog_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="creating-a-distill-blog_files/popper-2.6.0/popper.min.js"></script>
+  <link href="creating-a-distill-blog_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="creating-a-distill-blog_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="creating-a-distill-blog_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="creating-a-distill-blog_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="creating-a-distill-blog_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="creating-a-distill-blog_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="creating-a-distill-blog_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1455,7 +1453,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Importing Excel Data with Multiple Header Rows","description":"A solution for importing Excel Data that contains two header rows.","authors":[{"author":"Kyle Belanger","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-06-22T00:00:00.000-04:00","citationText":"Belanger, 2020"}
+{"title":"Converting From Blogdown to Distill","description":"A meta post on transferring from a blogdown to distill blog site","authors":[{"author":"Kyle Belanger","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-01-12T00:00:00.000-05:00","citationText":"Belanger, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1465,16 +1463,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Importing Excel Data with Multiple Header Rows</h1>
+<h1>Converting From Blogdown to Distill</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">Distill</div>
+</div>
 <!--/radix_placeholder_categories-->
-<p><p>A solution for importing Excel Data that contains two header rows.</p></p>
+<p><p>A meta post on transferring from a blogdown to distill blog site</p></p>
 </div>
 
 <div class="d-byline">
   Kyle Belanger true 
   
-<br/>06-22-2020
+<br/>01-12-2021
 </div>
 
 <div class="d-article">
@@ -1482,184 +1483,62 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#problem">Problem</a></li>
-<li><a href="#example-data">Example Data</a></li>
-<li><a href="#check-data">Check Data</a></li>
-<li><a href="#new-header-names">New Header Names</a>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#challenges">Challenges</a></li>
+<li><a href="#going-outside-the-box">Going Outside the Box</a>
 <ul>
-<li><a href="#step-1">Step 1</a></li>
-<li><a href="#step-2">Step 2</a></li>
-<li><a href="#step-3">Step 3</a></li>
-<li><a href="#step-4">Step 4</a></li>
-<li><a href="#step-4a">Step 4a</a></li>
-<li><a href="#step-5">Step 5</a></li>
+<li><a href="#code-folding">Code Folding</a></li>
+<li><a href="#customizing-the-home-page">Customizing the Home Page</a></li>
 </ul></li>
-<li><a href="#final-data">Final Data</a></li>
-<li><a href="#other-help">Other Help</a></li>
+<li><a href="#final-thoughts">Final Thoughts</a></li>
 </ul>
 </nav>
 </div>
+<h1 id="introduction">Introduction</h1>
+<p>This metapost describes changing my personal blog from a blogdown site to a distill blog site. I will not be going over starting a site from scratch as there are already several great resources for doing this. What I will be going over is some of the challenges and some of the changes and tips I have found. If you are looking to start a site from scratch, check out these great resources:</p>
+<ul>
+<li>The Distill for Rmarkdown page on creating a <a href="https://rstudio.github.io/distill/blog.html">blog</a></li>
+<li>This excellent post from Shamindra Shrotriya on setting up a <a href="https://www.shamindras.com/posts/2019-07-11-shrotriya2019distillpt1/">blog</a></li>
+<li>This post from the Mockup <a href="https://themockup.blog/posts/2020-08-01-building-a-blog-with-distill/">blog</a></li>
+</ul>
+<p>This last post goes into some of the pros and cons of using distill instead of blogdown. If you want simplicity, go with distill without much customization. If you want the ability for a lot of customization and don’t mind being frustrated with Hugo, go with blogdown.</p>
+<h1 id="challenges">Challenges</h1>
+<p>The good thing about switching from blogdown to distill was I had very few challenges! The distill documentation, combined with the two posts I listed, helped me with most of my troubles. The only issue I ran into was distill contains a function called <code>import_post()</code>, which according to the docs, only needs a published URL to work. I could never solve why, but I could not pull in the posts from my old blogdown site. This wasn’t a big deal as I had the original rmarkdown documents, but this could pose an issue if you didn’t.</p>
+<h1 id="going-outside-the-box">Going Outside the Box</h1>
+<h2 id="code-folding">Code Folding</h2>
+<p>When I converted my blog on 12/30/2020, code folding was not included as an option by default in distill. At that time, an excellent package called <a href="https://github.com/ijlyttle/codefolder">Codefolder</a> added the functionality. Since going live with the blog, code folding has been added to distill.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Code folding is available for either the whole document or individual code sections. The default caption is “Show Code”, but instead of typing <code>code_folding=TRUE</code>, you can provide a string to change the caption.</p>
 <div class="layout-chunk" data-layout="l-body">
-
-</div>
-<h1 id="problem">Problem</h1>
-<p>Recently I tried to important some Microsoft Excel data into R, and ran into an issue were the data actually had two different header rows. The top row listed a group, and then the second row listed a category within that group. Searching goggle I couldn’t really find a good example of what I was looking for, so I am putting it here in hopes of helping someone else!</p>
-<h1 id="example-data">Example Data</h1>
-<p>I have created a small Excel file to demonstrate what I am talking about. Download it <a href="https://github.com/mmmmtoasty19/kyleb/tree/master/content/post/2020-06-15-importing-excel-data-with-multiple-headers/example_data.xlsx">here</a>. This is the data from Excel. <img src="example_data_img1.png" alt="image of example data" /></p>
-<h1 id="check-data">Check Data</h1>
-<p>First we will read the file in using the package readxl and view the data without doing anything special to it.</p>
-<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Lets See It
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>                  <span class='co'># load the readxl library</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>               <span class='co'># load the tidyverse for manipulating the data</span>
-<span class='va'>file_path</span> <span class='op'>&lt;-</span> <span class='st'>"example_data.xlsx"</span> <span class='co'># set the file path</span>
-<span class='va'>ds0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span><span class='op'>)</span>     <span class='co'># read the file</span>
-<span class='va'>ds0</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Some awesome code </span>
+<span class='co'># That does awesome things</span>
 </code></pre>
 </div>
-<pre><code># A tibble: 7 x 7
-  Name   `Test 1` ...3  ...4  `Test 2` ...6  ...7 
-  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;
-1 &lt;NA&gt;   Run 1    Run 2 Run 3 Run 1    Run 2 Run 3
-2 Max    22       23    24    25       26    27   
-3 Phoebe 34       34    32    34       51    12   
-4 Scamp  35       36    21    22       23    24   
-5 Chance 1234     1235  1236  1267     173   1233 
-6 Aimee  420      123   690   42       45    12   
-7 Kyle   22       23    25    26       67    54   </code></pre>
+</details>
 </div>
-<h1 id="new-header-names">New Header Names</h1>
-<h3 id="step-1">Step 1</h3>
-<p>First lets read back the data, this time however with some options. We will set the n_max equal to 2, to only read the first two rows, and set col_names to FALSE so we do not read the first row as headers.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, n_max <span class='op'>=</span> <span class='fl'>2</span>, col_names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='va'>ds1</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 2 x 7
-  ...1  ...2   ...3  ...4  ...5   ...6  ...7 
-  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;
-1 Name  Test 1 &lt;NA&gt;  &lt;NA&gt;  Test 2 &lt;NA&gt;  &lt;NA&gt; 
-2 &lt;NA&gt;  Run 1  Run 2 Run 3 Run 1  Run 2 Run 3</code></pre>
-</div>
-<h3 id="step-2">Step 2</h3>
-<p>Now that we have our headers lets first transpose them to a vertical matrix using the base function t(), then we will turn it back into a tibble to allow us to use tidyr fill function.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>       <span class='co'>#transpose to a matrix</span>
-  <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span>   <span class='co'>#back to tibble</span>
-<span class='va'>names</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 7 x 2
-  V1     V2   
-  &lt;chr&gt;  &lt;chr&gt;
-1 Name   &lt;NA&gt; 
-2 Test 1 Run 1
-3 &lt;NA&gt;   Run 2
-4 &lt;NA&gt;   Run 3
-5 Test 2 Run 1
-6 &lt;NA&gt;   Run 2
-7 &lt;NA&gt;   Run 3</code></pre>
-</div>
-<p>Note that tidyr fill can not work row wise, thus the need to flip the tibble so it is long vs wide.</p>
-<h3 id="step-3">Step 3</h3>
-<p>Now we use tidyr fill function to fill the NA’s with whatever value it finds above.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>fill</span><span class='op'>(</span><span class='va'>V1</span><span class='op'>)</span>  <span class='co'>#use dplyr fill to fill in the NA's</span>
-<span class='va'>names</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 7 x 2
-  V1     V2   
-  &lt;chr&gt;  &lt;chr&gt;
-1 Name   &lt;NA&gt; 
-2 Test 1 Run 1
-3 Test 1 Run 2
-4 Test 1 Run 3
-5 Test 2 Run 1
-6 Test 2 Run 2
-7 Test 2 Run 3</code></pre>
-</div>
-<h3 id="step-4">Step 4</h3>
-<p>This is where my data differed from many of the examples I could find online. Because the second row is also a header we can not just get rid of them. We can solve this using paste() combined with dplyr mutate to form a new column that combines the first and second column.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>
-    new_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>V1</span>,<span class='va'>V2</span>, sep <span class='op'>=</span> <span class='st'>"_"</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='va'>names</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 7 x 3
-  V1     V2    new_names   
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       
-1 Name   &lt;NA&gt;  Name_NA     
-2 Test 1 Run 1 Test 1_Run 1
-3 Test 1 Run 2 Test 1_Run 2
-4 Test 1 Run 3 Test 1_Run 3
-5 Test 2 Run 1 Test 2_Run 1
-6 Test 2 Run 2 Test 2_Run 2
-7 Test 2 Run 3 Test 2_Run 3</code></pre>
-</div>
-<h3 id="step-4a">Step 4a</h3>
-<p>One more small clean up task, in the example data the first column header Name, did not have a second label, this has created a name with an NA attached. We can use stringr to remove this NA.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='va'>new_names</span>, <span class='op'>~</span><span class='fu'>str_remove_all</span><span class='op'>(</span><span class='va'>.</span>,<span class='st'>"_NA"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>names</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 7 x 3
-  V1     V2    new_names   
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       
-1 Name   &lt;NA&gt;  Name        
-2 Test 1 Run 1 Test 1_Run 1
-3 Test 1 Run 2 Test 1_Run 2
-4 Test 1 Run 3 Test 1_Run 3
-5 Test 2 Run 1 Test 2_Run 1
-6 Test 2 Run 2 Test 2_Run 2
-7 Test 2 Run 3 Test 2_Run 3</code></pre>
-</div>
-<h3 id="step-5">Step 5</h3>
-<p>Now that are new name column is the way we want it, we can use dpylrs pull to return a vector of just that column</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span>  <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>new_names</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h1 id="final-data">Final Data</h1>
-<p>Now that we have a vector of column names lets read in the original file using our new names. We set the skip argument to 2, to skip the first two rows, and set col_names equal to our vector of names. Note the last step I used the janitor package to provide names in snake case (the default for the clean names function.)</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>example_data</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, col_names <span class='op'>=</span> <span class='va'>names</span>, skip <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>example_data</span>
-</code></pre>
-</div>
-<pre><code># A tibble: 6 x 7
-  name  test_1_run_1 test_1_run_2 test_1_run_3 test_2_run_1
-  &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-1 Max             22           23           24           25
-2 Phoe~           34           34           32           34
-3 Scamp           35           36           21           22
-4 Chan~         1234         1235         1236         1267
-5 Aimee          420          123          690           42
-6 Kyle            22           23           25           26
-# ... with 2 more variables: test_2_run_2 &lt;dbl&gt;, test_2_run_3 &lt;dbl&gt;</code></pre>
-</div>
-<h1 id="other-help">Other Help</h1>
-<p>While searching for some solutions to my problem I found two good examples, however neither did exactly what I was trying to do.</p>
-<ol type="1">
-<li><p>This post by Lisa Deburine is pretty close to what I was trying to accomplish and gave me a good starting point. Read it <a href="https://debruine.github.io/posts/multi-row-headers/">here</a></p></li>
-<li><p>This post by Alison Hill solves a simlar but slightly different problem. In her data the 2nd row is actually metadata not a second set of headers. Read it <a href="https://alison.rbind.io/post/2018-02-23-read-multiple-header-rows/">here</a></p></li>
+<h2 id="customizing-the-home-page">Customizing the Home Page</h2>
+<p>By default, a distill blog’s home page will be the blog index page. I chose to edit my home page to be a landing page for myself and then have the blog index as a separate page. When creating a new blog, this is the default YAML header for your index page.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;New Site&quot;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">site</span><span class="kw">:</span><span class="at"> distill::distill_website</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="fu">listing</span><span class="kw">:</span><span class="at"> posts</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="pp">---</span></span></code></pre></div>
+<p>The critical piece here is the line <code>site: distill::distill_website</code>. This line is what is needed to render the website. For my home page, I decided to use the package <a href="https://github.com/seankross/postcards">Postcard</a>, which is used to generate simple landing pages. I won’t go into every step as there is already a great post by <a href="https://alison.rbind.io/post/2020-12-22-postcards-distill/">Alison Hill</a> on how to do that. However, I will point out the most crucial part of the new index page the YAML header needs to contain these two lines.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="at">  postcards::trestles</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="fu">site</span><span class="kw">:</span><span class="at"> distill::distill_website</span></span></code></pre></div>
+<h1 id="final-thoughts">Final Thoughts</h1>
+<p>I have enjoyed the simplicity of Distill. While not nearly as customizable as blogdown, getting a blog site up and running in under an hour is pretty lovely. I hope to keep exploring what Distill has to offer and keep posting my updates!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Note that as of publishing, code folding is only available in the development version of distill<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1671,10 +1550,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom">
-<h3 id="reuse">Reuse</h3>
-<p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
-</div>
+<div class="appendix-bottom"></div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

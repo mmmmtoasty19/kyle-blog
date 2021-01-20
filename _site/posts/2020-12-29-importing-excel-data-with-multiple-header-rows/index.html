@@ -124,12 +124,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","creative_commons","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Importing Excel Data with Multiple Header Rows"]},{"type":"character","attributes":{},"value":["A solution for importing Excel Data that contains two header rows."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kyle Belanger"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["06-22-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows/"]},{"type":"character","attributes":{},"value":["https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","creative_commons","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Importing Excel Data with Multiple Header Rows"]},{"type":"character","attributes":{},"value":["A solution for importing Excel Data that contains two header rows."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kyle Belanger"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["06-22-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows/"]},{"type":"character","attributes":{},"value":["https://kyleb.rbind.io/posts/2020-12-29-importing-excel-data-with-multiple-header-rows/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["example_data.xlsx","example_data_img1.png","importing-excel-data-with-multiple-header-rows_files/anchor-4.2.2/anchor.min.js","importing-excel-data-with-multiple-header-rows_files/bowser-1.9.3/bowser.min.js","importing-excel-data-with-multiple-header-rows_files/distill-2.2.21/template.v2.js","importing-excel-data-with-multiple-header-rows_files/header-attrs-2.6.4/header-attrs.js","importing-excel-data-with-multiple-header-rows_files/jquery-1.11.3/jquery.min.js","importing-excel-data-with-multiple-header-rows_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["example_data.xlsx","example_data_img1.png","importing-excel-data-with-multiple-header-rows_files/anchor-4.2.2/anchor.min.js","importing-excel-data-with-multiple-header-rows_files/bowser-1.9.3/bowser.min.js","importing-excel-data-with-multiple-header-rows_files/distill-2.2.21/template.v2.js","importing-excel-data-with-multiple-header-rows_files/header-attrs-2.6.4/header-attrs.js","importing-excel-data-with-multiple-header-rows_files/jquery-1.11.3/jquery.min.js","importing-excel-data-with-multiple-header-rows_files/popper-2.6.0/popper.min.js","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy-bundle.umd.min.js","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy-light-border.css","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.css","importing-excel-data-with-multiple-header-rows_files/tippy-6.2.7/tippy.umd.min.js","importing-excel-data-with-multiple-header-rows_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -583,7 +583,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           var results = fuse.search(query, searchOptions);
           callback(results
             .map(function(result) { return result.item; })
-            .filter(function(item) { return !!item.description; })
           );
         },
         templates: {
@@ -595,7 +594,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
               <div class="search-item">
                 <h3>${suggestion.title}</h3>
                 <div class="search-item-description">
-                  ${suggestion.description}
+                  ${suggestion.description || ''}
                 </div>
                 <div class="search-item-preview">
                   ${img}
@@ -700,6 +699,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
   margin-block-start: 0;
   margin-block-end: 5px;
 }
@@ -927,6 +927,11 @@ d-article pre a:hover {
   text-decoration: underline;
 }
 
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
 @media(min-width: 768px) {
 
 d-article pre,
@@ -1081,6 +1086,17 @@ d-article .citation {
 
 div.hanging-indent{
   margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
 }
 
 
@@ -1748,7 +1764,7 @@ function init_distill() {
     var layout = $(this).attr('data-layout');
 
     // apply layout to markdown level block elements
-    var elements = $(this).children().not('div.sourceCode, pre, script');
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
     elements.each(function(i, el) {
       var layout_div = $('<div class="' + layout + '"></div>');
       if (layout_div.hasClass('shaded')) {
@@ -1863,6 +1879,20 @@ function init_distill() {
     // move appendix-bottom entries to the bottom
     $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
     $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
 
     // clear polling timer
     clearInterval(tid);
@@ -2361,6 +2391,10 @@ d-appendix d-footnote-list a.footnote-backlink {
 <!--/radix_placeholder_distill-->
   <script src="../../site_libs/header-attrs-2.6.4/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2445,7 +2479,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>First we will read the file in using the package readxl and view the data without doing anything special to it.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>                  <span class='co'># load the readxl library</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>                  <span class='co'># load the readxl library</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>               <span class='co'># load the tidyverse for manipulating the data</span>
 <span class='va'>file_path</span> <span class='op'>&lt;-</span> <span class='st'>"example_data.xlsx"</span> <span class='co'># set the file path</span>
 <span class='va'>ds0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span><span class='op'>)</span>     <span class='co'># read the file</span>
@@ -2468,7 +2502,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>First lets read back the data, this time however with some options. We will set the n_max equal to 2, to only read the first two rows, and set col_names to FALSE so we do not read the first row as headers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, n_max <span class='op'>=</span> <span class='fl'>2</span>, col_names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, n_max <span class='op'>=</span> <span class='fl'>2</span>, col_names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 <span class='va'>ds1</span>
 </code></pre>
 </div>
@@ -2482,7 +2516,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Now that we have our headers lets first transpose them to a vertical matrix using the base function t(), then we will turn it back into a tibble to allow us to use tidyr fill function.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>       <span class='co'>#transpose to a matrix</span>
   <span class='fu'>as_tibble</span><span class='op'>(</span><span class='op'>)</span>   <span class='co'>#back to tibble</span>
 <span class='va'>names</span>
@@ -2504,7 +2538,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Now we use tidyr fill function to fill the NA’s with whatever value it finds above.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>fill</span><span class='op'>(</span><span class='va'>V1</span><span class='op'>)</span>  <span class='co'>#use dplyr fill to fill in the NA's</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>fill</span><span class='op'>(</span><span class='va'>V1</span><span class='op'>)</span>  <span class='co'>#use dplyr fill to fill in the NA's</span>
 <span class='va'>names</span>
 </code></pre>
 </div>
@@ -2523,7 +2557,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>This is where my data differed from many of the examples I could find online. Because the second row is also a header we can not just get rid of them. We can solve this using paste() combined with dplyr mutate to form a new column that combines the first and second column.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span>
   <span class='fu'>mutate</span><span class='op'>(</span>
     new_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>V1</span>,<span class='va'>V2</span>, sep <span class='op'>=</span> <span class='st'>"_"</span><span class='op'>)</span>
   <span class='op'>)</span>
@@ -2545,7 +2579,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>One more small clean up task, in the example data the first column header Name, did not have a second label, this has created a name with an NA attached. We can use stringr to remove this NA.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='va'>new_names</span>, <span class='op'>~</span><span class='fu'>str_remove_all</span><span class='op'>(</span><span class='va'>.</span>,<span class='st'>"_NA"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span> <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='va'>new_names</span>, <span class='op'>~</span><span class='fu'>str_remove_all</span><span class='op'>(</span><span class='va'>.</span>,<span class='st'>"_NA"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>names</span>
 </code></pre>
 </div>
@@ -2564,7 +2598,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Now that are new name column is the way we want it, we can use dpylrs pull to return a vector of just that column</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>names</span> <span class='op'>&lt;-</span>  <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>new_names</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>names</span> <span class='op'>&lt;-</span>  <span class='va'>names</span> <span class='op'>%&gt;%</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>new_names</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2572,7 +2606,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <p>Now that we have a vector of column names lets read in the original file using our new names. We set the skip argument to 2, to skip the first two rows, and set col_names equal to our vector of names. Note the last step I used the janitor package to provide names in snake case (the default for the clean names function.)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>example_data</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, col_names <span class='op'>=</span> <span class='va'>names</span>, skip <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>example_data</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='va'>file_path</span>, col_names <span class='op'>=</span> <span class='va'>names</span>, skip <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>example_data</span>
 </code></pre>
