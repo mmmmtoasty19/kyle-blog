@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://kyleb.rbind.io/blog.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -86,21 +85,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Kyle Belanger: Posts</title>
+  <title>Kyle Belanger: Projects</title>
 
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Kyle Belanger: Posts"/>
+  <meta property="og:title" content="Kyle Belanger: Projects"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Kyle Belanger"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Kyle Belanger: Posts"/>
+  <meta property="twitter:title" content="Kyle Belanger: Projects"/>
   <meta property="twitter:site" content="@WKyleB"/>
   <meta property="twitter:creator" content="@WKyleB"/>
 
@@ -108,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Posts"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Projects"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2384,12 +2383,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Posts","authors":[]}
+{"title":"Projects","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2412,279 +2411,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Posts">Posts</h1>
-<a href="posts/2021-01-12-converting-from-blogdown-to-distill/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Distill"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 12, 2021</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Converting From Blogdown to Distill</h2>
-<div class="dt-tags">
-<div class="dt-tag">Distill</div>
-</div>
-<p>A meta post on transferring from a blogdown to distill blog site</p>
-</div>
-</a>
-<a href="posts/2020-12-29-diabetes-in-rural-north-carolina-data-collection-and-cleaning/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">July 25, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Diabetes in Rural North Carolina : Data Collection and Cleaning</h2>
-<div class="dt-tags"></div>
-<p>This is the second post in the series exploring Diabetes in rural North Carolina.  This post will explore the data used for this project, from collection, cleaning, and analysis ready data.</p>
-</div>
-</a>
-<a href="posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">June 25, 2020</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends/diabetes-in-rural-north-carolina-exploring-prevalence-trends_files/figure-html5/o-g1-1.png"/>
-</div>
-<div class="description">
-<h2>Diabetes in Rural North Carolina : Exploring Prevalence Trends</h2>
-<div class="dt-tags"></div>
-<p>This post introduces the exploration of the Diabetes epidemic in North Carolina</p>
-</div>
-</a>
-<a href="posts/2020-12-29-importing-excel-data-with-multiple-header-rows/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">June 22, 2020</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Importing Excel Data with Multiple Header Rows</h2>
-<div class="dt-tags"></div>
-<p>A solution for importing Excel Data that contains two header rows.</p>
-</div>
-</a>
-<a href="posts/2020-12-28-basic-exploration-of-who-tuberculosis-data/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Feb. 13, 2020</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-12-28-basic-exploration-of-who-tuberculosis-data/basic-exploration-of-who-tuberculosis-data_files/figure-html5/unnamed-chunk-5-1.png"/>
-</div>
-<div class="description">
-<h2>Basic Exploration of WHO Tuberculosis Data</h2>
-<div class="dt-tags"></div>
-<p>Today I am going to dive into some real life data from the World Health Organization (WHO), exploring new and relapse cases of Tuberculosis.  I clean up the data, and then make a few graphs to explore different variables.</p>
-</div>
-</a>
-<a href="posts/2020-12-28-line-graphs-and-interactivity/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Feb. 10, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-12-28-line-graphs-and-interactivity/line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png"/>
-</div>
-<div class="description">
-<h2>Line Graphs and Interactivity</h2>
-<div class="dt-tags"></div>
-<p>Tableau for Healthcare Chapter 10.  Static and Interactive examples</p>
-</div>
-</a>
-<a href="posts/2020-12-28-facets-and-a-lesson-in-humility/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 29, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-12-28-facets-and-a-lesson-in-humility/facets-and-a-lesson-in-humility_files/figure-html5/unnamed-chunk-4-1.png"/>
-</div>
-<div class="description">
-<h2>Facets and a Lesson in Humility</h2>
-<div class="dt-tags"></div>
-<p>A look at Tableau for Healthcare Chapter 8.  Table Lens graph.</p>
-</div>
-</a>
-<a href="posts/2020-12-28-my-start-to-r/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 24, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png"/>
-</div>
-<div class="description">
-<h2>My Start to R</h2>
-<div class="dt-tags"></div>
-<p>A short introduction to my blog, and R journey.</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(8)</span>
-</li>
-<li>
-<a href="#category:Distill">Distill</a>
-<span class="category-count">(1)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Posts</h1>
+<h1>Projects</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
