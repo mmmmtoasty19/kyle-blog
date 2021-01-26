@@ -1,3 +1,17 @@
 ---
 title: "Projects"
 ---
+
+# Ongoing Projects
+
+-   Person Centered Care Research
+
+    -   I am currently working as a Data Analyst for research on person
+        centered care in SUD and MDH treatment facilities
+    -   [View Project](https://ccie.ucf.edu/person-centered-care/)
+
+# Shiny Apps
+
+-   [COVID Explorer](https://kyleb.shinyapps.io/covid-explorer/)
+
+-   [NYPD CCRB](https://kyleb.shinyapps.io/nypd-ccrb-2020-shiny/)

@@ -5,7 +5,7 @@
       "title": "Posts",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-01-25T17:10:10-05:00"
+      "last_modified": "2021-01-25T17:13:17-05:00"
     },
     {
       "path": "index.html",
@@ -18,8 +18,8 @@
       "path": "projects.html",
       "title": "Projects",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-01-25T17:10:12-05:00"
+      "contents": "\r\nOngoing Projects\r\nPerson Centered Care Research\r\nI am currently working as a Data Analyst for research on person centered care in SUD and MDH treatment facilities\r\nView Project\r\n\r\nShiny Apps\r\nCOVID Explorer\r\nNYPD CCRB\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-01-26T17:41:22-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
