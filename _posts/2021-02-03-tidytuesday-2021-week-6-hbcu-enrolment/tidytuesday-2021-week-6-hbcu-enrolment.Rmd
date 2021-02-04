@@ -27,40 +27,91 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 
 # Load Data
 
+Note use of import from %nin% 
+
 ```{r}
 library(dplyr)
+import::from(Hmisc, `%nin%`)
 
-bach_students_raw <- readxl::read_xlsx("104.10.xlsx", sheet = 2)
+hs_students_raw <- readxl::read_xlsx("104.10.xlsx", sheet = 1)
 
-glimpse(bach_students_raw)
+glimpse(hs_students_raw)
 
 ```
 
-
-We can see we have some wild column names, as well as a column named total, which is actually just the year column.  Due to some characters in each column, ever column has been read in as a character, when in reality they should be numeric, lets fix this first.  I also don't like that prior to 1985, years are sporadic, so lets just focus on 1985 and on.  I will finish here with renaming the Total column to year.
+filter year 1985 and up
+remove weird dates
 
 ```{r}
 
-bach_students <- bach_students_raw %>% 
-  mutate(across(everything(), as.numeric)) %>% 
+
+
+hs_students <- hs_students_raw %>% 
   filter(Total >= 1985) %>% 
-  rename(year = Total)
+  filter(Total %nin% c(19103, 19203, 19303))
 
 ```
 
-Pivot_longer 
-#TODO: Explain why
+convert to numeric
+
+```{r}
+hs_students <- hs_students_raw %>% 
+  filter(Total >= 1985) %>% 
+  filter(Total %nin% c(19103, 19203, 19303)) %>% 
+  mutate(across(everything(), as.numeric))
+  
+```
+
+rename columns 
 
 ```{r}
 
-bach_students_long <- bach_students %>% 
-  tidyr::pivot_longer(-year)
+hs_students <- hs_students_raw %>% 
+  filter(Total >= 1985) %>% 
+  filter(Total %nin% c(19103, 19203, 19303)) %>% 
+  mutate(across(everything(), as.numeric)) %>% 
+  rename(year = Total) %>% 
+  rename_with(
+    ~stringr::str_remove_all(
+      .
+      ,", percent of all persons age 25 and over|1"
+      )
+    )
+  
 
 ```
 
+reomve asain/pac total as they are stored in seperate columns 
+reomve string asian/pac
 
+```{r}
 
+hs_students <- hs_students_raw %>% 
+  filter(Total >= 1985) %>% 
+  filter(Total %nin% c(19103, 19203, 19303)) %>% 
+  mutate(across(everything(), as.numeric)) %>% 
+  rename(year = Total) %>% 
+  rename_with(
+    ~stringr::str_remove_all(
+      .
+      ,", percent of all persons age 25 and over|1"
+      )
+    ) %>% 
+  select(-contains("Total - Asian/Pacific Islander")) %>% 
+  rename_with(
+    ~stringr::str_remove_all(
+      .
+      ,"Asian/Pacific Islander - "
+    )
+  )
 
+```
 
+pivot data
+
+```{r}
+hs_students_long <- hs_students %>% 
+  tidyr::pivot_longer(-year)
+```
 
 
