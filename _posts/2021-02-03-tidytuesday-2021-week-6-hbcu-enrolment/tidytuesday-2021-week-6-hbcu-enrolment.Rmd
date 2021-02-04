@@ -1,0 +1,66 @@
+---
+title: "TidyTuesday 2021 Week 6: HBCU Enrolment"
+description: |
+  A short description of the post.
+author:
+  - name: Kyle Belanger
+    url: {}
+date: 02-03-2021
+categories:
+  - TidyTuesday
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: TRUE
+    code_folding: TRUE
+draft: TRUE
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+# Introduction
+
+
+
+# Load Data
+
+```{r}
+library(dplyr)
+
+bach_students_raw <- readxl::read_xlsx("104.10.xlsx", sheet = 2)
+
+glimpse(bach_students_raw)
+
+```
+
+
+We can see we have some wild column names, as well as a column named total, which is actually just the year column.  Due to some characters in each column, ever column has been read in as a character, when in reality they should be numeric, lets fix this first.  I also don't like that prior to 1985, years are sporadic, so lets just focus on 1985 and on.  I will finish here with renaming the Total column to year.
+
+```{r}
+
+bach_students <- bach_students_raw %>% 
+  mutate(across(everything(), as.numeric)) %>% 
+  filter(Total >= 1985) %>% 
+  rename(year = Total)
+
+```
+
+Pivot_longer 
+#TODO: Explain why
+
+```{r}
+
+bach_students_long <- bach_students %>% 
+  tidyr::pivot_longer(-year)
+
+```
+
+
+
+
+
+
+
