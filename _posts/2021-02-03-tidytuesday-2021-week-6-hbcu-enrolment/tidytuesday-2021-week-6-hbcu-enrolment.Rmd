@@ -6,7 +6,7 @@ description: |
 author:
   - name: Kyle Belanger
     url: {}
-date: 02-03-2021
+date: 02-26-2021
 categories:
   - TidyTuesday
 output:
@@ -14,7 +14,6 @@ output:
     self_contained: false
     toc: TRUE
     code_folding: TRUE
-draft: TRUE
 ---
 
 
@@ -195,11 +194,10 @@ g1
 
 
 ```
-note use of aesthetics in scale_color_brewer, matchs the colors
-
-
 
 # Load Male/Female Data
+
+Now the file also contains the same information but split by male and female.  I am going to load in that data.
 
 ```{r}
 male_hs_raw   <- readxl::read_excel("104.10.xlsx", sheet = 3)
@@ -207,7 +205,7 @@ female_hs_raw <- readxl::read_excel("104.10.xlsx", sheet = 5)
 
 ```
 
-Use the same manipulations as above, expect we will tag the results as male and female
+Here I will use the same manipulations as above, the only addition is adding a column for sex.
 
 ```{r}
 
@@ -280,7 +278,7 @@ female_hs <- female_hs_raw %>%
 
 ```
 
-Add the two data frames together and pivot wider
+Here we will combine the two data frames and then pivot to our final graphing form.
 
 ```{r}
 
@@ -297,8 +295,7 @@ male_female_hs_wide <- male_hs %>%
 
 ```
 
-
-Lets Graph
+Lets first graph the total for Male and Female graduation rates. 
 
 ```{r}
 
@@ -330,7 +327,7 @@ g2 <- male_female_hs_wide %>%
 g2
 ```
 
-Final Graph, Sex and Race
+Now I am going to graph by Sex and Race.  
 
 ```{r}
 
@@ -369,4 +366,10 @@ g2 <- male_female_hs_wide %>%
 g2
 
 ```
+
+# Conclusion  
+
+While I am sure there is much more that could be done with this data this is where I am going to stop for today.  Our graphs clearly show a divide in graduation rates by race, however Sex does not seem to have much of an effect on graduation rates.  
+
+
 
