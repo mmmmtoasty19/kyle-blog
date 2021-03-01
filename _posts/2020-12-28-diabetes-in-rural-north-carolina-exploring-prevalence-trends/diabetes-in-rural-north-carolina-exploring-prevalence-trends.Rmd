@@ -143,7 +143,7 @@ When viewing all county trend lines together, we see that the loess line for bot
 
 The following graphs displays the total estimated prevalence of Diabetes in each off the 100 North Carolina counties. To keep the scaling consistent between the graphs, we binned the estimates into 6 intervals of the same size.  Rural counties are highlighted with a stronger border line as well as a letter “R” in respective geographic centers. These graphs allow us to view geographical clusters of diabetes prevalence.   
 
-```{r c-g1}
+```{r c-g1, layout="l-body-outset"}
 ```
 
 The following box plot displays the distribution of estimated cases by county from 2006 to 2014.  For all years of current data the mean of rural counties is higher then that of their Urban counterparts. 
