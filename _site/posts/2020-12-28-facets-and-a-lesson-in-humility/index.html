@@ -102,20 +102,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="A look at Tableau for Healthcare Chapter 8.  Table Lens graph."/>
 <meta property="og:url" content="https://kyleb.rbind.io/posts/2020-12-28-facets-and-a-lesson-in-humility/"/>
-<meta property="og:image" content="https://kyleb.rbind.io/posts/2020-12-28-facets-and-a-lesson-in-humility/facets-and-a-lesson-in-humility_files/figure-html5/unnamed-chunk-4-1.png"/>
-<meta property="og:image:width" content="2304"/>
-<meta property="og:image:height" content="1344"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kyle Belanger"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:card" content="summary"/>
 <meta property="twitter:title" content="Kyle Belanger: Facets and a Lesson in Humility"/>
 <meta property="twitter:description" content="A look at Tableau for Healthcare Chapter 8.  Table Lens graph."/>
 <meta property="twitter:url" content="https://kyleb.rbind.io/posts/2020-12-28-facets-and-a-lesson-in-humility/"/>
-<meta property="twitter:image" content="https://kyleb.rbind.io/posts/2020-12-28-facets-and-a-lesson-in-humility/facets-and-a-lesson-in-humility_files/figure-html5/unnamed-chunk-4-1.png"/>
-<meta property="twitter:image:width" content="2304"/>
-<meta property="twitter:image:height" content="1344"/>
 <meta property="twitter:site" content="@WKyleB"/>
 <meta property="twitter:creator" content="@WKyleB"/>
 
@@ -481,7 +475,7 @@ d-title {
 
 </style>
 
-<script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
 <link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
 <script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1888,7 +1882,10 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
       window.tippy(this, {
         allowHTML: true,
         content: refHtml,
@@ -2582,11 +2579,13 @@ d-appendix d-footnote-list a.footnote-backlink {
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->
-<!--radix_placeholder_navigation_after_body-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--radix_placeholder_navigation_after_body--><html><body>
 <div class="distill-site-nav distill-site-footer">
-  <p>@ Copyright 2020 Kyle Belanger</p>
+<p>@ Copyright 2020 Kyle Belanger</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
+</body></html>
 
 
 </body>

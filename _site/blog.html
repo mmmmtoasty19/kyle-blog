@@ -2423,7 +2423,7 @@ function init_posts_list() {
     var src = $(img).attr('data-src');
     if (src) {
       $(img).attr('src', src);
-      $(img).load(function() {
+      $(img).on("load", function() {
         img.removeAttribute('data-src');
       });
     }
@@ -2469,6 +2469,7 @@ function init_posts_list() {
 
       // mark posts that match the category visible
       var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
       var posts = $('.post-metadata').map(function(idx, script) {
         var metadata = $.parseJSON($(script).html());
         var post = null;
@@ -2484,7 +2485,7 @@ function init_posts_list() {
       set_posts_visible(posts, true);
 
       // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
 
       // update the list_caption
       var list_caption = $('.posts-list-caption');
@@ -2600,7 +2601,7 @@ function init_posts_list() {
 <div class="publishedDate">June 25, 2020</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-12-28-diabetes-in-rural-north-carolina-exploring-prevalence-trends/diabetes-in-rural-north-carolina-exploring-prevalence-trends_files/figure-html5/o-g1-1.png"/>
+<img/>
 </div>
 <div class="description">
 <h2>Diabetes in Rural North Carolina : Exploring Prevalence Trends</h2>
@@ -2628,7 +2629,7 @@ function init_posts_list() {
 <div class="publishedDate">Feb. 13, 2020</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-12-28-basic-exploration-of-who-tuberculosis-data/basic-exploration-of-who-tuberculosis-data_files/figure-html5/unnamed-chunk-5-1.png"/>
+<img/>
 </div>
 <div class="description">
 <h2>Basic Exploration of WHO Tuberculosis Data</h2>
@@ -2642,7 +2643,7 @@ function init_posts_list() {
 <div class="publishedDate">Feb. 10, 2020</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-12-28-line-graphs-and-interactivity/line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png"/>
+<img/>
 </div>
 <div class="description">
 <h2>Line Graphs and Interactivity</h2>
@@ -2656,7 +2657,7 @@ function init_posts_list() {
 <div class="publishedDate">Jan. 29, 2020</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-12-28-facets-and-a-lesson-in-humility/facets-and-a-lesson-in-humility_files/figure-html5/unnamed-chunk-4-1.png"/>
+<img/>
 </div>
 <div class="description">
 <h2>Facets and a Lesson in Humility</h2>
@@ -2670,7 +2671,7 @@ function init_posts_list() {
 <div class="publishedDate">Jan. 24, 2020</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png"/>
+<img/>
 </div>
 <div class="description">
 <h2>My Start to R</h2>
@@ -2702,7 +2703,7 @@ function init_posts_list() {
 <a href="#">More articles &raquo;</a>
 </div>
 </div>
-<!--/radix_placeholder_article_listing-->
+<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
 <h1>Posts</h1>

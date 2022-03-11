@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>Kyle Belanger: TidyTuesday 2021 Week 6: HBCU Enrollment</title>
@@ -135,7 +137,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["104.10.xlsx","tidytuesday-2021-week-6-hbcu-enrolment_files/anchor-4.2.2/anchor.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/bowser-1.9.3/bowser.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/distill-2.2.21/template.v2.js","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-10-1.png","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-14-1.png","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-15-1.png","tidytuesday-2021-week-6-hbcu-enrolment_files/header-attrs-2.6.4/header-attrs.js","tidytuesday-2021-week-6-hbcu-enrolment_files/jquery-1.11.3/jquery.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/popper-2.6.0/popper.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/tippy-6.2.7/tippy-light-border.css","tidytuesday-2021-week-6-hbcu-enrolment_files/tippy-6.2.7/tippy.css","tidytuesday-2021-week-6-hbcu-enrolment_files/tippy-6.2.7/tippy.umd.min.js","tidytuesday-2021-week-6-hbcu-enrolment_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["104.10.xlsx","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-10-1.png","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-14-1.png","tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-15-1.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -481,7 +483,7 @@ d-title {
 
 </style>
 
-<script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
 <link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
 <script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1888,7 +1890,10 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
       window.tippy(this, {
         allowHTML: true,
         content: refHtml,
@@ -2395,8 +2400,8 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.6.4/header-attrs.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2447,7 +2452,8 @@ d-appendix d-footnote-list a.footnote-backlink {
   <a href="../../blog.html#category:TidyTuesday" class="dt-tag">TidyTuesday</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>TidyTuesday 2021 Week 6: HBCU Enrollment. Posts looks at tidying the data ,as well as making some graphs about the data.</p></p>
+<p><p>TidyTuesday 2021 Week 6: HBCU Enrollment. Posts looks at tidying
+the data ,as well as making some graphs about the data.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2469,9 +2475,30 @@ d-appendix d-footnote-list a.footnote-backlink {
 </nav>
 </div>
 <h1 id="introduction">Introduction</h1>
-<p>Recently I was struggling to find a data project to work on, I felt a bit stuck with some of my current projects, so I begun to scour the internet to find something to work on. I stumbled upon (TidyTuesday)[<a href="https://github.com/rfordatascience/tidytuesday" class="uri">https://github.com/rfordatascience/tidytuesday</a>] a weekly project where untidy data is posted from various sources, for the goal of practicing cleaning and visualizing. There is not right or wrong answers for TidyTuesday, this was exactly what I was looking for! This week (well by the time this was posted, a few weeks ago) the data set was about Historically Black Colleges and Universities. Within the posted data there were a few different data sets, I chose to work with the set dealing with High school Graduation rates, throughout this post I will explain my steps for cleaning and then present a few different graphs. It should also be noted that in the first section my code blocks will build upon themselves, so the same code will be duplicated as I add more steps to it.</p>
+<p>Recently I was struggling to find a data project to work on, I felt a
+bit stuck with some of my current projects, so I begun to scour the
+internet to find something to work on. I stumbled upon (TidyTuesday)[<a
+href="https://github.com/rfordatascience/tidytuesday"
+class="uri">https://github.com/rfordatascience/tidytuesday</a>] a weekly
+project where untidy data is posted from various sources, for the goal
+of practicing cleaning and visualizing. There is not right or wrong
+answers for TidyTuesday, this was exactly what I was looking for! This
+week (well by the time this was posted, a few weeks ago) the data set
+was about Historically Black Colleges and Universities. Within the
+posted data there were a few different data sets, I chose to work with
+the set dealing with High school Graduation rates, throughout this post
+I will explain my steps for cleaning and then present a few different
+graphs. It should also be noted that in the first section my code blocks
+will build upon themselves, so the same code will be duplicated as I add
+more steps to it.</p>
 <h1 id="load-data">Load Data</h1>
-<p>In this first block we will load some required libraries as well as load in the raw data. This dataset contains data for Highschool graduation rates by race. One thing to point out here is the use of <code>import::from()</code>, will its use here is a bit overkill, it was more for my practice. In this case I am importing the function <code>%nin</code> from the <em>Hmisc</em> package, which in the opposite of the function <code>%in%</code> from base R.</p>
+<p>In this first block we will load some required libraries as well as
+load in the raw data. This dataset contains data for Highschool
+graduation rates by race. One thing to point out here is the use of
+<code>import::from()</code>, will its use here is a bit overkill, it was
+more for my practice. In this case I am importing the function
+<code>%nin</code> from the <em>Hmisc</em> package, which in the opposite
+of the function <code>%in%</code> from base R.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2479,79 +2506,90 @@ Show code
 </summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 
 <span class='fu'>import</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/import/man/importfunctions.html'>from</a></span><span class='op'>(</span><span class='va'>Hmisc</span>, <span class='va'>`%nin%`</span><span class='op'>)</span>
 
 <span class='va'>hs_students_raw</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span><span class='st'>"104.10.xlsx"</span>, sheet <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>hs_students_raw</span><span class='op'>)</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>hs_students_raw</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 <pre><code>Rows: 48
 Columns: 19
-$ Total                                                             &lt;dbl&gt; ...
-$ `Total, percent of all persons age 25 and over`                   &lt;dbl&gt; ...
-$ `Standard Errors - Total, percent of all persons age 25 and over` &lt;chr&gt; ...
-$ White1                                                            &lt;chr&gt; ...
-$ `Standard Errors - White1`                                        &lt;chr&gt; ...
-$ Black1                                                            &lt;chr&gt; ...
-$ `Standard Errors - Black1`                                        &lt;chr&gt; ...
-$ Hispanic                                                          &lt;chr&gt; ...
-$ `Standard Errors - Hispanic`                                      &lt;chr&gt; ...
-$ `Total - Asian/Pacific Islander`                                  &lt;chr&gt; ...
-$ `Standard Errors - Total - Asian/Pacific Islander`                &lt;chr&gt; ...
-$ `Asian/Pacific Islander - Asian`                                  &lt;chr&gt; ...
-$ `Standard Errors - Asian/Pacific Islander - Asian`                &lt;chr&gt; ...
-$ `Asian/Pacific Islander - Pacific Islander`                       &lt;chr&gt; ...
-$ `Standard Errors - Asian/Pacific Islander - Pacific Islander`     &lt;chr&gt; ...
-$ `American Indian/\r\nAlaska Native`                               &lt;chr&gt; ...
-$ `Standard Errors - American Indian/\r\nAlaska Native`             &lt;chr&gt; ...
-$ `Two or more race`                                                &lt;chr&gt; ...
-$ `Standard Errors - Two or more race`                              &lt;chr&gt; ...</code></pre>
+$ Total                                                             &lt;dbl&gt; ~
+$ `Total, percent of all persons age 25 and over`                   &lt;dbl&gt; ~
+$ `Standard Errors - Total, percent of all persons age 25 and over` &lt;chr&gt; ~
+$ White1                                                            &lt;chr&gt; ~
+$ `Standard Errors - White1`                                        &lt;chr&gt; ~
+$ Black1                                                            &lt;chr&gt; ~
+$ `Standard Errors - Black1`                                        &lt;chr&gt; ~
+$ Hispanic                                                          &lt;chr&gt; ~
+$ `Standard Errors - Hispanic`                                      &lt;chr&gt; ~
+$ `Total - Asian/Pacific Islander`                                  &lt;chr&gt; ~
+$ `Standard Errors - Total - Asian/Pacific Islander`                &lt;chr&gt; ~
+$ `Asian/Pacific Islander - Asian`                                  &lt;chr&gt; ~
+$ `Standard Errors - Asian/Pacific Islander - Asian`                &lt;chr&gt; ~
+$ `Asian/Pacific Islander - Pacific Islander`                       &lt;chr&gt; ~
+$ `Standard Errors - Asian/Pacific Islander - Pacific Islander`     &lt;chr&gt; ~
+$ `American Indian/\r\nAlaska Native`                               &lt;chr&gt; ~
+$ `Standard Errors - American Indian/\r\nAlaska Native`             &lt;chr&gt; ~
+$ `Two or more race`                                                &lt;chr&gt; ~
+$ `Standard Errors - Two or more race`                              &lt;chr&gt; ~</code></pre>
 </div>
-<p>Now we are going to start cleaning the data. First I am going to filter for years 1985 and up, prior to this year the data set is a bit spardic, so to keep it clean I am only going to look at 1985 and up. There are also 3 odd years (19103,19203,19303) that I am not sure what those are so I will remove that data as well.</p>
+<p>Now we are going to start cleaning the data. First I am going to
+filter for years 1985 and up, prior to this year the data set is a bit
+spardic, so to keep it clean I am only going to look at 1985 and up.
+There are also 3 odd years (19103,19203,19303) that I am not sure what
+those are so I will remove that data as well.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 </div>
-<p>Next I am going to convert all columns to be numeric, because of some blanks in the original import all of the columns read in as characters instead of numeric.</p>
+<p>Next I am going to convert all columns to be numeric, because of some
+blanks in the original import all of the columns read in as characters
+instead of numeric.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 </div>
-<p>Next I am going to rename the columns. First I rename the column Total, into year, as this column holds the year! Then I use <code>stringr::str_remove_all</code> to remove the long phrase ‘percent of all persons age 25 and over’, as well as the number 1. For some reason the Black and White columns each have a number 1 at the end, I think this is for some sort of footnote but we will just remove it.</p>
+<p>Next I am going to rename the columns. First I rename the column
+Total, into year, as this column holds the year! Then I use
+<code>stringr::str_remove_all</code> to remove the long phrase ‘percent
+of all persons age 25 and over’, as well as the number 1. For some
+reason the Black and White columns each have a number 1 at the end, I
+think this is for some sort of footnote but we will just remove it.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
@@ -2562,25 +2600,30 @@ Show code
 </div>
 </details>
 </div>
-<p>Then I am going to drop the column ‘Total - Asian/Pacific Islander’, each of these races is stored in a seperate column so if I needed the total later for some reason I could calculate it. I am also going to drop the string “Asian/Pacific Islander -”, from the begin of each of those columns, so they will now tell me just which race each column refers too.</p>
+<p>Then I am going to drop the column ‘Total - Asian/Pacific Islander’,
+each of these races is stored in a seperate column so if I needed the
+total later for some reason I could calculate it. I am also going to
+drop the string “Asian/Pacific Islander -”, from the begin of each of
+those columns, so they will now tell me just which race each column
+refers too.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
       ,<span class='st'>", percent of all persons age 25 and over|1"</span>
       <span class='op'>)</span>
-    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
@@ -2591,30 +2634,38 @@ Show code
 </div>
 </details>
 </div>
-<p>I now simply pivot the data longer. A nice trick I learned since I want to pivot everything expect the year column is to use the minus sign to select every column expect the year column in the pivot.</p>
+<p>I now simply pivot the data longer. A nice trick I learned since I
+want to pivot everything expect the year column is to use the minus sign
+to select every column expect the year column in the pivot.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_long</span> <span class='op'>&lt;-</span> <span class='va'>hs_students</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_long</span> <span class='op'>&lt;-</span> <span class='va'>hs_students</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 </div>
-<p>With the data now in long form I am going to separate the automatically generate name column into two columns titled, stat and race. The data contains both the percent that graduated and the standard error. Then I replace all the NA’s in the stat column with Total, as these are the total percentage and the other rows will be the standard error. Last I dropped the s from standard errors to make it singular.</p>
+<p>With the data now in long form I am going to separate the
+automatically generate name column into two columns titled, stat and
+race. The data contains both the percent that graduated and the standard
+error. Then I replace all the NA’s in the stat column with Total, as
+these are the total percentage and the other rows will be the standard
+error. Last I dropped the s from standard errors to make it
+singular.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_long</span> <span class='op'>&lt;-</span> <span class='va'>hs_students</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_long</span> <span class='op'>&lt;-</span> <span class='va'>hs_students</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
       <span class='va'>stat</span>
@@ -2629,55 +2680,69 @@ Show code
 </div>
 </details>
 </div>
-<p>I know pivot the date back to wide form, and use the <em>Janitor</em> package to clean the column names. This puts them in lowercase with _ for spaces.</p>
+<p>I know pivot the date back to wide form, and use the <em>Janitor</em>
+package to clean the column names. This puts them in lowercase with _
+for spaces.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_long</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 </div>
-<p>To make graphing a bit easier with the <em>scales</em> package, I divide both columns by 100. We will see why in the graphs.</p>
+<p>To make graphing a bit easier with the <em>scales</em> package, I
+divide both columns by 100. We will see why in the graphs.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_long</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='va'>total</span><span class='op'>:</span><span class='va'>standard_error</span>, <span class='op'>~</span><span class='va'>.x</span><span class='op'>/</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </details>
 </div>
-<p>It’s now time to graph. Notice the use <code>scales::label_percent()</code> as the labels value for the y axis. If the numbers were left as the default values (75 vs 0.75) the percentages would have been 750%, which is obviously very wrong! I also use geom_ribbon to draw the standard error bars around each line. Notice the use of color = NA, by default the ribbon has outlines, I did not like this so doing color = NA turns them off. (It should be noted there are a few other solutions to turning them off but this seemed the easiest to me). Last we see the use of the aesthetics argument in scale_color_brewer. By setting this we match the color and fill to be the same color, without setting this, the colors of the error bars and lines don’t match!</p>
+<p>It’s now time to graph. Notice the use
+<code>scales::label_percent()</code> as the labels value for the y axis.
+If the numbers were left as the default values (75 vs 0.75) the
+percentages would have been 750%, which is obviously very wrong! I also
+use geom_ribbon to draw the standard error bars around each line. Notice
+the use of color = NA, by default the ribbon has outlines, I did not
+like this so doing color = NA turns them off. (It should be noted there
+are a few other solutions to turning them off but this seemed the
+easiest to me). Last we see the use of the aesthetics argument in
+scale_color_brewer. By setting this we match the color and fill to be
+the same color, without setting this, the colors of the error bars and
+lines don’t match!</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_wide</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hs_students_wide</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
     ymax  <span class='op'>=</span> <span class='va'>total</span> <span class='op'>-</span> <span class='va'>standard_error</span>
     ,ymin <span class='op'>=</span> <span class='va'>total</span> <span class='op'>+</span> <span class='va'>standard_error</span>
   <span class='op'>)</span>
 
-<span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_wide</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'>!=</span> <span class='st'>"Total"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='va'>hs_students_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'>!=</span> <span class='st'>"Total"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='va'>race</span>, color <span class='op'>=</span> <span class='va'>race</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymax <span class='op'>=</span> <span class='va'>ymax</span>, ymin <span class='op'>=</span> <span class='va'>ymin</span>, fill <span class='op'>=</span> <span class='va'>race</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, color <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1985</span>,<span class='fl'>2016</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_color_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Dark2"</span>, aesthetics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"color"</span>, <span class='st'>"fill"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
@@ -2701,7 +2766,8 @@ Show code
 <p><img src="tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
 <h1 id="load-malefemale-data">Load Male/Female Data</h1>
-<p>Now the file also contains the same information but split by male and female. I am going to load in that data.</p>
+<p>Now the file also contains the same information but split by male and
+female. I am going to load in that data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2714,34 +2780,35 @@ Show code
 </div>
 </details>
 </div>
-<p>Here I will use the same manipulations as above, the only addition is adding a column for sex.</p>
+<p>Here I will use the same manipulations as above, the only addition is
+adding a column for sex.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>male_hs</span> <span class='op'>&lt;-</span> <span class='va'>male_hs_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>male_hs</span> <span class='op'>&lt;-</span> <span class='va'>male_hs_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
       ,<span class='st'>", percent of all persons age 25 and over|1"</span>
       <span class='op'>)</span>
-    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
       ,<span class='st'>"Asian/Pacific Islander - "</span>
     <span class='op'>)</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
       <span class='va'>stat</span>
@@ -2755,27 +2822,27 @@ Show code
   <span class='op'>)</span>
 
 
-<span class='va'>female_hs</span> <span class='op'>&lt;-</span> <span class='va'>female_hs_raw</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='va'>female_hs</span> <span class='op'>&lt;-</span> <span class='va'>female_hs_raw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>&gt;=</span> <span class='fl'>1985</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Total</span> <span class='op'>%nin%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>19103</span>, <span class='fl'>19203</span>, <span class='fl'>19303</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>as.numeric</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='va'>Total</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
       ,<span class='st'>", percent of all persons age 25 and over|1"</span>
       <span class='op'>)</span>
-    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>contains</a></span><span class='op'>(</span><span class='st'>"Total - Asian/Pacific Islander"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rename.html'>rename_with</a></span><span class='op'>(</span>
     <span class='op'>~</span><span class='fu'>stringr</span><span class='fu'>::</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_remove.html'>str_remove_all</a></span><span class='op'>(</span>
       <span class='va'>.</span>
       ,<span class='st'>"Asian/Pacific Islander - "</span>
     <span class='op'>)</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>year</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stat"</span>, <span class='st'>"race"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>"- "</span>, fill <span class='op'>=</span> <span class='st'>"left"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>replace_na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"Total"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
       <span class='va'>stat</span>
@@ -2791,18 +2858,19 @@ Show code
 </div>
 </details>
 </div>
-<p>Here we will combine the two data frames and then pivot to our final graphing form.</p>
+<p>Here we will combine the two data frames and then pivot to our final
+graphing form.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>male_female_hs_wide</span> <span class='op'>&lt;-</span> <span class='va'>male_hs</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>female_hs</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='va'>total</span><span class='op'>:</span><span class='va'>standard_error</span>, <span class='op'>~</span><span class='va'>.x</span><span class='op'>/</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>male_female_hs_wide</span> <span class='op'>&lt;-</span> <span class='va'>male_hs</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>female_hs</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_wider.html'>pivot_wider</a></span><span class='op'>(</span>names_from <span class='op'>=</span> <span class='va'>stat</span>, values_from <span class='op'>=</span> <span class='va'>value</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/janitor/man/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='va'>total</span><span class='op'>:</span><span class='va'>standard_error</span>, <span class='op'>~</span><span class='va'>.x</span><span class='op'>/</span><span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
     ymax  <span class='op'>=</span> <span class='va'>total</span> <span class='op'>-</span> <span class='va'>standard_error</span>
     ,ymin <span class='op'>=</span> <span class='va'>total</span> <span class='op'>+</span> <span class='va'>standard_error</span>
@@ -2818,13 +2886,13 @@ Show code
 Show code
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>male_female_hs_wide</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'>==</span> <span class='st'>"Total"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>male_female_hs_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'>==</span> <span class='st'>"Total"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='va'>sex</span>, color <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymax <span class='op'>=</span> <span class='va'>ymax</span>, ymin <span class='op'>=</span> <span class='va'>ymin</span>, fill <span class='op'>=</span> <span class='va'>sex</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, color <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1985</span>,<span class='fl'>2016</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_color_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Dark2"</span>, aesthetics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"color"</span>, <span class='st'>"fill"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
@@ -2863,13 +2931,13 @@ Show code
 <span class='op'>}</span>
 
 
-<span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>male_female_hs_wide</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'>%in%</span> <span class='va'>race_filter</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>male_female_hs_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>race</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>race_filter</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interaction.html'>interaction</a></span><span class='op'>(</span><span class='va'>sex</span>,<span class='va'>race</span><span class='op'>)</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interaction.html'>interaction</a></span><span class='op'>(</span><span class='va'>sex</span>,<span class='va'>race</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymax <span class='op'>=</span> <span class='va'>ymax</span>, ymin <span class='op'>=</span> <span class='va'>ymin</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interaction.html'>interaction</a></span><span class='op'>(</span><span class='va'>sex</span>,<span class='va'>race</span><span class='op'>)</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span>, color <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_x_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1985</span>,<span class='fl'>2016</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_percent.html'>label_percent</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_color_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Dark2"</span>, aesthetics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"color"</span>, <span class='st'>"fill"</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='va'>make_label</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
@@ -2893,8 +2961,12 @@ Show code
 <p><img src="tidytuesday-2021-week-6-hbcu-enrolment_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
 </div>
 <h1 id="conclusion">Conclusion</h1>
-<p>While I am sure there is much more that could be done with this data this is where I am going to stop for today. Our graphs clearly show a divide in graduation rates by race, however Sex does not seem to have much of an effect on graduation rates.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>While I am sure there is much more that could be done with this data
+this is where I am going to stop for today. Our graphs clearly show a
+divide in graduation rates by race, however Sex does not seem to have
+much of an effect on graduation rates.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
@@ -2939,11 +3011,13 @@ Show code
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->
-<!--radix_placeholder_navigation_after_body-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--radix_placeholder_navigation_after_body--><html><body>
 <div class="distill-site-nav distill-site-footer">
-  <p>@ Copyright 2020 Kyle Belanger</p>
+<p>@ Copyright 2020 Kyle Belanger</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
+</body></html>
 
 
 </body>
