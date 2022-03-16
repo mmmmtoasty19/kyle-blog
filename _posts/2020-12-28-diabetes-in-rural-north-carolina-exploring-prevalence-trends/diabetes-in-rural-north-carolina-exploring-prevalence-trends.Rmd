@@ -24,6 +24,9 @@ knitr::opts_chunk$set(echo = TRUE, R.options = list(width = 80))
 ```{r, echo=FALSE}
 knitr::read_chunk("diabetes-1.R")
 ```
+# Update
+
+2022-15-03:  Since this was posted the CDC has updated how county level diabetes prevalance is calculated.  The data presented here is using previous calcualtions and may no longer be correct.  More can be read [here](https://www.cdc.gov/diabetes/data/statistics/faqs.html)
 
 
 # Abstract
