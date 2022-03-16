@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>Kyle Belanger: My Start to R</title>
@@ -102,14 +104,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="A short introduction to my blog, and R journey."/>
 <meta property="og:url" content="https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r/"/>
+<meta property="og:image" content="https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png"/>
+<meta property="og:image:width" content="1248"/>
+<meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kyle Belanger"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Kyle Belanger: My Start to R"/>
 <meta property="twitter:description" content="A short introduction to my blog, and R journey."/>
 <meta property="twitter:url" content="https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r/"/>
+<meta property="twitter:image" content="https://kyleb.rbind.io/posts/2020-12-28-my-start-to-r/my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png"/>
+<meta property="twitter:image:width" content="1248"/>
+<meta property="twitter:image:height" content="768"/>
 <meta property="twitter:site" content="@WKyleB"/>
 <meta property="twitter:creator" content="@WKyleB"/>
 
@@ -2392,8 +2400,12 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.6.4/header-attrs.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2454,18 +2466,29 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li><a href="#load-libraries">Load Libraries</a></li>
 <li><a href="#import-data">Import Data</a></li>
 <li><a href="#clean-data-names">Clean Data Names</a></li>
-<li><a href="#convert-data-to-long-form">Convert Data to ‘Long Form’</a></li>
+<li><a href="#convert-data-to-long-form">Convert Data to ‘Long
+Form’</a></li>
 <li><a href="#graph-5.1">Graph 5.1</a></li>
 </ul>
 </nav>
 </div>
-<p>Today starts my attempt at sharing my R journey with the world! I have been learning R off and on now since late 2019, I have begun to take it much more serious as I work through my Data Analytics class at UCF. My love for all things numbers and graphs has really blossomed, and I am choosing to share that love with anyone who cares to read. I will not claim to be the best at R, or any programming for that matter, but these are my attempts. Each post in this serious will be replicated a graph created in Tableau from the book Tableau for Healthcare. Todays graph is a simple horizontal bar chart, in transferring to both a new blog site and computer I have unfortunately lost the original bar graph, but trust me the one I created looks just like it.</p>
+<p>Today starts my attempt at sharing my R journey with the world! I
+have been learning R off and on now since late 2019, I have begun to
+take it much more serious as I work through my Data Analytics class at
+UCF. My love for all things numbers and graphs has really blossomed, and
+I am choosing to share that love with anyone who cares to read. I will
+not claim to be the best at R, or any programming for that matter, but
+these are my attempts. Each post in this serious will be replicated a
+graph created in Tableau from the book Tableau for Healthcare. Todays
+graph is a simple horizontal bar chart, in transferring to both a new
+blog site and computer I have unfortunately lost the original bar graph,
+but trust me the one I created looks just like it.</p>
 <h1 id="load-libraries">Load Libraries</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 </code></pre>
@@ -2474,7 +2497,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1 id="import-data">Import Data</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>
     path   <span class='op'>=</span> <span class='st'>"Tableau 10 Training Practice Data.xlsx"</span> 
     ,sheet <span class='op'>=</span> <span class='st'>"02 - Patient Falls-Single Hosp"</span>
     <span class='op'>)</span>
@@ -2484,7 +2507,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1 id="clean-data-names">Clean Data Names</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'>#should make reusable forumla at later time</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#should make reusable forumla at later time</span>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>,<span class='st'>" "</span>, <span class='st'>"_"</span><span class='op'>)</span>
 </code></pre>
@@ -2493,10 +2516,10 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1 id="convert-data-to-long-form">Convert Data to ‘Long Form’</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span><span class='op'>(</span><span class='st'>"patient_falls_no_injury_rate"</span> , <span class='st'>"patient_falls_with_injury_rate"</span>
          ,key   <span class='op'>=</span> <span class='st'>"injury"</span> 
-         ,value <span class='op'>=</span> <span class='st'>"rate"</span> <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+         ,value <span class='op'>=</span> <span class='st'>"rate"</span> <span class='op'>)</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>injury <span class='op'>=</span> <span class='op'>(</span><span class='va'>injury</span> <span class='op'>==</span> <span class='st'>"patient_falls_with_injury_rate"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2504,7 +2527,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1 id="graph-5.1">Graph 5.1</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>b1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>b1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'><a href='https://tidyr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>type_of_care</span>,<span class='va'>total_patient_falls_rate</span> <span class='op'>)</span> , y <span class='op'>=</span> <span class='va'>total_patient_falls_rate</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#2b83ba"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2522,7 +2545,8 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 <p><img src="my-start-to-r_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
