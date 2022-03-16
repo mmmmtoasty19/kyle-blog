@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -55,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -76,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>Kyle Belanger: Line Graphs and Interactivity</title>
@@ -102,14 +104,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Tableau for Healthcare Chapter 10.  Static and Interactive examples"/>
 <meta property="og:url" content="https://kyleb.rbind.io/posts/2020-12-28-line-graphs-and-interactivity/"/>
+<meta property="og:image" content="https://kyleb.rbind.io/posts/2020-12-28-line-graphs-and-interactivity/line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png"/>
+<meta property="og:image:width" content="1248"/>
+<meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Kyle Belanger"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Kyle Belanger: Line Graphs and Interactivity"/>
 <meta property="twitter:description" content="Tableau for Healthcare Chapter 10.  Static and Interactive examples"/>
 <meta property="twitter:url" content="https://kyleb.rbind.io/posts/2020-12-28-line-graphs-and-interactivity/"/>
+<meta property="twitter:image" content="https://kyleb.rbind.io/posts/2020-12-28-line-graphs-and-interactivity/line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png"/>
+<meta property="twitter:image:width" content="1248"/>
+<meta property="twitter:image:height" content="768"/>
 <meta property="twitter:site" content="@WKyleB"/>
 <meta property="twitter:creator" content="@WKyleB"/>
 
@@ -129,7 +137,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["flu_surveillance.png","line-graphs-and-interactivity_files/anchor-4.2.2/anchor.min.js","line-graphs-and-interactivity_files/bowser-1.9.3/bowser.min.js","line-graphs-and-interactivity_files/crosstalk-1.1.0.1/css/crosstalk.css","line-graphs-and-interactivity_files/crosstalk-1.1.0.1/js/crosstalk.js","line-graphs-and-interactivity_files/crosstalk-1.1.0.1/js/crosstalk.js.map","line-graphs-and-interactivity_files/crosstalk-1.1.0.1/js/crosstalk.min.js","line-graphs-and-interactivity_files/crosstalk-1.1.0.1/js/crosstalk.min.js.map","line-graphs-and-interactivity_files/distill-2.2.21/template.v2.js","line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png","line-graphs-and-interactivity_files/header-attrs-2.6.4/header-attrs.js","line-graphs-and-interactivity_files/htmlwidgets-1.5.1/htmlwidgets.js","line-graphs-and-interactivity_files/jquery-1.11.3/jquery-AUTHORS.txt","line-graphs-and-interactivity_files/jquery-1.11.3/jquery.js","line-graphs-and-interactivity_files/jquery-1.11.3/jquery.min.js","line-graphs-and-interactivity_files/jquery-1.11.3/jquery.min.map","line-graphs-and-interactivity_files/plotly-binding-4.9.2.1/plotly.js","line-graphs-and-interactivity_files/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css","line-graphs-and-interactivity_files/plotly-main-1.52.2/plotly-latest.min.js","line-graphs-and-interactivity_files/typedarray-0.1/typedarray.min.js","line-graphs-and-interactivity_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["flu_surveillance.png","line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2392,15 +2400,19 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.6.4/header-attrs.js"></script>
-  <script src="../../site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-  <script src="../../site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+  <script src="../../site_libs/plotly-binding-4.10.0/plotly.js"></script>
   <script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <link href="../../site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-  <script src="../../site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-  <link href="../../site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-  <script src="../../site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+  <script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+  <link href="../../site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+  <script src="../../site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
@@ -2444,7 +2456,8 @@ d-appendix d-footnote-list a.footnote-backlink {
 <h1>Line Graphs and Interactivity</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Tableau for Healthcare Chapter 10. Static and Interactive examples</p></p>
+<p><p>Tableau for Healthcare Chapter 10. Static and Interactive
+examples</p></p>
 </div>
 
 <div class="d-byline">
@@ -2466,43 +2479,56 @@ d-appendix d-footnote-list a.footnote-backlink {
 </ul>
 </nav>
 </div>
-<p>Today’s post is all about line graphs using both ggplot for a static graph as well as a package called plotly for interactivity (more on this later). The example graph and data is again coming from Tableau for Healthcare, Chapter 10. <img src="flu_surveillance.png" alt="Example Line Graph" /></p>
+<p>Today’s post is all about line graphs using both ggplot for a static
+graph as well as a package called plotly for interactivity (more on this
+later). The example graph and data is again coming from Tableau for
+Healthcare, Chapter 10. <img src="flu_surveillance.png"
+alt="Example Line Graph" /></p>
 <h2 id="load-libraries">Load Libraries</h2>
-<p>As always first step is to load in our libraries, I am using quite a few here, some are a bit overkill for this example but I wanted to play around with some fun features today.</p>
+<p>As always first step is to load in our libraries, I am using quite a
+few here, some are a bit overkill for this example but I wanted to play
+around with some fun features today.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span> <span class='co'>#pipes</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span> <span class='co'>#ploting </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span> <span class='co'>#pipes</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span> <span class='co'>#ploting </span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>  <span class='co'># data manipulation</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span> <span class='co'># tidy data</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span> <span class='co'>#work with dates</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span> <span class='co'>#work with dates</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span> <span class='co'># manipulate strings</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://plotly-r.com'>plotly</a></span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <h2 id="import-data">Import Data</h2>
-<p>Next lets import our data, this week we are using the sheet Flu Occurrence FY2013-2016. I am unsure if this is form a real data set or not but it is good for demonstration purposes! After importing we can glimpse at our data to understand what is contained within.</p>
+<p>Next lets import our data, this week we are using the sheet Flu
+Occurrence FY2013-2016. I am unsure if this is form a real data set or
+not but it is good for demonstration purposes! After importing we can
+glimpse at our data to understand what is contained within.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"../2020-12-28-my-start-to-r/Tableau 10 Training Practice Data.xlsx"</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_xlsx</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='st'>"../2020-12-28-my-start-to-r/Tableau 10 Training Practice Data.xlsx"</span>
                         ,sheet <span class='op'>=</span> <span class='st'>"05 - Flu Occurrence FY2013-2016"</span>
                         <span class='op'>)</span>
-<span class='va'>ds</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>ds</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Rows: 48
 Columns: 4
-$ Date                                         &lt;dttm&gt; 2012-10-27,...
-$ `Tests (+) for Influenza (count)`            &lt;dbl&gt; 995, 3228, 2...
-$ `Total Respiratory Specimens Tested (count)` &lt;dbl&gt; 18986, 24757...
-$ `% Tests (+) for Influenza`                  &lt;dbl&gt; 0.05240704, ...</code></pre>
+$ Date                                         &lt;dttm&gt; 2012-10-27, 20~
+$ `Tests (+) for Influenza (count)`            &lt;dbl&gt; 995, 3228, 2236~
+$ `Total Respiratory Specimens Tested (count)` &lt;dbl&gt; 18986, 24757, 6~
+$ `% Tests (+) for Influenza`                  &lt;dbl&gt; 0.05240704, 0.1~</code></pre>
 </div>
 <h2 id="transform-data">Transform Data</h2>
-<p>I went a bit overboard today with renaming the variables. I wanted to practice writing a function and while it might not be the prettiest or the best way to do this, it worked for what I was trying to accomplish. Note the use of sapply, which lets us run the function on each column name.</p>
+<p>I went a bit overboard today with renaming the variables. I wanted to
+practice writing a function and while it might not be the prettiest or
+the best way to do this, it worked for what I was trying to accomplish.
+Note the use of sapply, which lets us run the function on each column
+name.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>format_names</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>format_names</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='co'>#Fucntion to set all names to lower case, and strip unneeded characters</span>
   <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
   <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>x</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='co'>#set each pattern equal to replacement</span>
@@ -2520,42 +2546,60 @@ $ `% Tests (+) for Influenza`                  &lt;dbl&gt; 0.05240704, ...</code
 </code></pre>
 </div>
 </div>
-<p>Now is were the fun really starts! For this particular data set there are a couple things we need to add to replicate the example. In the original data set the date is stored with month, day, and year; the day is irrelevant and we need to pull out the month as well as the year. For this we can use the lubridate package, first we pull out the month and set it as a factor. For this example our year actually starts in October, so we set our factor to start at October (10), and end with September (9). We then pull out the year, which presents us with a different problem. Again our year starts in October, instead of January. To solve this I have created a variable called date adjustment, in this column is our month is 10 or greater, we will place a 1, if not a 0. We then set our fiscal year to be the actual year plus the date adjustment, this allows us to have our dates in the right fiscal year. Last the percent column is currently listed as a decimal, so we will convert this to a percentage.</p>
+<p>Now is were the fun really starts! For this particular data set there
+are a couple things we need to add to replicate the example. In the
+original data set the date is stored with month, day, and year; the day
+is irrelevant and we need to pull out the month as well as the year. For
+this we can use the lubridate package, first we pull out the month and
+set it as a factor. For this example our year actually starts in
+October, so we set our factor to start at October (10), and end with
+September (9). We then pull out the year, which presents us with a
+different problem. Again our year starts in October, instead of January.
+To solve this I have created a variable called date adjustment, in this
+column is our month is 10 or greater, we will place a 1, if not a 0. We
+then set our fiscal year to be the actual year plus the date adjustment,
+this allows us to have our dates in the right fiscal year. Last the
+percent column is currently listed as a decimal, so we will convert this
+to a percentage.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='co'># split date time</span>
-<span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># split date time</span>
+<span class='va'>ds1</span> <span class='op'>&lt;-</span> <span class='va'>ds</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
         <span class='co'>#create month column, then set factors and labels to start fiscal year in Oct</span>
-        month <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span>
+        month <span class='op'>=</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span>
         ,month <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>month</span>
                         ,levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>12</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>)</span>
                         ,labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>month.abb</span><span class='op'>[</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>12</span><span class='op'>]</span>,<span class='va'>month.abb</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
-       ,year <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span>
-        ,date_adjustment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span> <span class='op'>&gt;=</span> <span class='fl'>10</span>, <span class='fl'>1</span>,<span class='fl'>0</span> <span class='op'>)</span>
+       ,year <span class='op'>=</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/year.html'>year</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span>
+        ,date_adjustment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>$</span><span class='va'>date</span><span class='op'>)</span> <span class='op'>&gt;=</span> <span class='fl'>10</span>, <span class='fl'>1</span>,<span class='fl'>0</span> <span class='op'>)</span>
         ,fiscal_year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>+</span> <span class='va'>date_adjustment</span><span class='op'>)</span>
         <span class='co'>#convert % Pos from decmial to pct</span>
         ,pct_tests_pos_for_influenza <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>pct_tests_pos_for_influenza</span> <span class='op'>*</span> <span class='fl'>100</span>, digits <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
         <span class='op'>)</span>
 
-<span class='va'>ds1</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>ds1</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Rows: 48
 Columns: 8
-$ date                                     &lt;dttm&gt; 2012-10-27, 201...
-$ tests_pos_for_influenza_count            &lt;dbl&gt; 995, 3228, 22368...
-$ total_respiratory_specimens_tested_count &lt;dbl&gt; 18986, 24757, 66...
-$ pct_tests_pos_for_influenza              &lt;dbl&gt; 5, 13, 34, 33, 2...
-$ month                                    &lt;fct&gt; Oct, Nov, Dec, J...
-$ year                                     &lt;dbl&gt; 2012, 2012, 2012...
-$ date_adjustment                          &lt;dbl&gt; 1, 1, 1, 0, 0, 0...
-$ fiscal_year                              &lt;fct&gt; 2013, 2013, 2013...</code></pre>
+$ date                                     &lt;dttm&gt; 2012-10-27, 2012-1~
+$ tests_pos_for_influenza_count            &lt;dbl&gt; 995, 3228, 22368, 2~
+$ total_respiratory_specimens_tested_count &lt;dbl&gt; 18986, 24757, 66683~
+$ pct_tests_pos_for_influenza              &lt;dbl&gt; 5, 13, 34, 33, 23, ~
+$ month                                    &lt;fct&gt; Oct, Nov, Dec, Jan,~
+$ year                                     &lt;dbl&gt; 2012, 2012, 2012, 2~
+$ date_adjustment                          &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0~
+$ fiscal_year                              &lt;fct&gt; 2013, 2013, 2013, 2~</code></pre>
 </div>
 <h2 id="ggplot">GGplot</h2>
-<p>The graph here is pretty straight forward with one exception, group! For this line graph we want ggplot to connect the lines of the same year, if we do not explicitly state this using the group mapping, ggplot will try to connect all the lines together, which of course is not at all what we want!</p>
+<p>The graph here is pretty straight forward with one exception, group!
+For this line graph we want ggplot to connect the lines of the same
+year, if we do not explicitly state this using the group mapping, ggplot
+will try to connect all the lines together, which of course is not at
+all what we want!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g1</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>month</span>, y <span class='op'>=</span> <span class='va'>pct_tests_pos_for_influenza</span>, color <span class='op'>=</span> <span class='va'>fiscal_year</span>
                ,group <span class='op'>=</span> <span class='va'>fiscal_year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2575,14 +2619,19 @@ $ fiscal_year                              &lt;fct&gt; 2013, 2013, 2013...</code
 <p><img src="line-graphs-and-interactivity_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
 <h2 id="plotly">plotly</h2>
-<p>One of the nice features of Tableau is the fact the graphs are interactive, while a good graph should speak for itself, end users love pretty things. I have been experimenting with Plotly, which has an open source package for R (as well as many other programming languages!). This example only just scratches the surface, but there will be many more to come!</p>
+<p>One of the nice features of Tableau is the fact the graphs are
+interactive, while a good graph should speak for itself, end users love
+pretty things. I have been experimenting with Plotly, which has an open
+source package for R (as well as many other programming languages!).
+This example only just scratches the surface, but there will be many
+more to come!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'>%&gt;%</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>g2</span> <span class='op'>&lt;-</span> <span class='va'>ds1</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://rdrr.io/pkg/plotly/man/plot_ly.html'>plot_ly</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='op'>~</span><span class='va'>month</span>, y <span class='op'>=</span> <span class='op'>~</span><span class='va'>pct_tests_pos_for_influenza</span>, type <span class='op'>=</span> <span class='st'>"scatter"</span>, mode <span class='op'>=</span> <span class='st'>"lines"</span> 
             ,color <span class='op'>=</span> <span class='op'>~</span><span class='va'>fiscal_year</span>
             ,colors <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#a6611a"</span>,<span class='st'>"#dfc27d"</span>,<span class='st'>"#80cdc1"</span>,<span class='st'>"#018571"</span><span class='op'>)</span>
-            , hoverinfo <span class='op'>=</span> <span class='st'>'y'</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+            , hoverinfo <span class='op'>=</span> <span class='st'>'y'</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
     <span class='fu'><a href='https://rdrr.io/pkg/plotly/man/layout.html'>layout</a></span><span class='op'>(</span>xaxis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
                         title <span class='op'>=</span> <span class='st'>""</span>
                     <span class='op'>)</span>
@@ -2600,10 +2649,11 @@ $ fiscal_year                              &lt;fct&gt; 2013, 2013, 2013...</code
 <span class='va'>g2</span>
 </code></pre>
 </div>
-<div id="htmlwidget-60dc0832b6b76286dcc7" style="width:624px;height:384px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-60dc0832b6b76286dcc7">{"x":{"visdat":{"35f83de35b88":["function () ","plotlyVisDat"]},"cur_data":"35f83de35b88","attrs":{"35f83de35b88":{"x":{},"y":{},"mode":"lines","hoverinfo":"y","color":{},"colors":["#a6611a","#dfc27d","#80cdc1","#018571"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"% Tests (+) for Influenza"},"title":"Flu Viral Surveillance: % Respiratory Specimens Positive for Influenza","legend":{"x":100,"y":0.5},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[5,13,34,33,23,17,11,6,4,3,3,3],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2013","marker":{"color":"rgba(166,97,26,1)","line":{"color":"rgba(166,97,26,1)"}},"textfont":{"color":"rgba(166,97,26,1)"},"error_y":{"color":"rgba(166,97,26,1)"},"error_x":{"color":"rgba(166,97,26,1)"},"line":{"color":"rgba(166,97,26,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[4,8,26,27,18,12,14,10,6,4,3,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2014","marker":{"color":"rgba(223,194,125,1)","line":{"color":"rgba(223,194,125,1)"}},"textfont":{"color":"rgba(223,194,125,1)"},"error_y":{"color":"rgba(223,194,125,1)"},"error_x":{"color":"rgba(223,194,125,1)"},"line":{"color":"rgba(223,194,125,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[4,13,29,23,14,12,8,4,2,2,2,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2015","marker":{"color":"rgba(128,205,193,1)","line":{"color":"rgba(128,205,193,1)"}},"textfont":{"color":"rgba(128,205,193,1)"},"error_y":{"color":"rgba(128,205,193,1)"},"error_x":{"color":"rgba(128,205,193,1)"},"line":{"color":"rgba(128,205,193,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[1,1,2,6,17,20,12,5,2,1,1,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2016","marker":{"color":"rgba(1,133,113,1)","line":{"color":"rgba(1,133,113,1)"}},"textfont":{"color":"rgba(1,133,113,1)"},"error_y":{"color":"rgba(1,133,113,1)"},"error_x":{"color":"rgba(1,133,113,1)"},"line":{"color":"rgba(1,133,113,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d659b1069e8693892206" style="width:624px;height:384px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d659b1069e8693892206">{"x":{"visdat":{"31dc38b2b2":["function () ","plotlyVisDat"]},"cur_data":"31dc38b2b2","attrs":{"31dc38b2b2":{"x":{},"y":{},"mode":"lines","hoverinfo":"y","color":{},"colors":["#a6611a","#dfc27d","#80cdc1","#018571"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"% Tests (+) for Influenza"},"title":"Flu Viral Surveillance: % Respiratory Specimens Positive for Influenza","legend":{"x":100,"y":0.5},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[5,13,34,33,23,17,11,6,4,3,3,3],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2013","marker":{"color":"rgba(166,97,26,1)","line":{"color":"rgba(166,97,26,1)"}},"textfont":{"color":"rgba(166,97,26,1)"},"error_y":{"color":"rgba(166,97,26,1)"},"error_x":{"color":"rgba(166,97,26,1)"},"line":{"color":"rgba(166,97,26,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[4,8,26,27,18,12,14,10,6,4,3,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2014","marker":{"color":"rgba(223,194,125,1)","line":{"color":"rgba(223,194,125,1)"}},"textfont":{"color":"rgba(223,194,125,1)"},"error_y":{"color":"rgba(223,194,125,1)"},"error_x":{"color":"rgba(223,194,125,1)"},"line":{"color":"rgba(223,194,125,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[4,13,29,23,14,12,8,4,2,2,2,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2015","marker":{"color":"rgba(128,205,193,1)","line":{"color":"rgba(128,205,193,1)"}},"textfont":{"color":"rgba(128,205,193,1)"},"error_y":{"color":"rgba(128,205,193,1)"},"error_x":{"color":"rgba(128,205,193,1)"},"line":{"color":"rgba(128,205,193,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep"],"y":[1,1,2,6,17,20,12,5,2,1,1,2],"mode":"lines","hoverinfo":["y","y","y","y","y","y","y","y","y","y","y","y"],"type":"scatter","name":"2016","marker":{"color":"rgba(1,133,113,1)","line":{"color":"rgba(1,133,113,1)"}},"textfont":{"color":"rgba(1,133,113,1)"},"error_y":{"color":"rgba(1,133,113,1)"},"error_x":{"color":"rgba(1,133,113,1)"},"line":{"color":"rgba(1,133,113,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">
