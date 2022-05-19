@@ -5,7 +5,7 @@
       "title": "Posts",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-03-11T12:53:55-05:00"
+      "last_modified": "2022-03-16T09:09:03-04:00"
     },
     {
       "path": "index.html",
@@ -18,8 +18,8 @@
       "path": "projects.html",
       "title": "Projects",
       "author": [],
-      "contents": "\r\nOngoing Projects\r\nPerson Centered Care Research\r\nI am currently working as a Data Analyst for research on person centered care in SUD and MDH treatment facilities\r\nView Project\r\n\r\nShiny Apps\r\nCOVID Explorer\r\nNYPD CCRB\r\n\r\n\r\n\r\n",
-      "last_modified": "2022-03-11T12:08:52-05:00"
+      "contents": "\r\nOngoing Projects\r\nPerson Centered Care Research\r\nI am currently working as a Data Analyst for research on person\r\ncentered care in SUD and MDH treatment facilities\r\nView\r\nProject\r\n\r\nShiny Apps\r\nCOVID\r\nExplorer\r\nNote this is no longer in active development so the data is quite\r\nstale\r\n\r\nNYPD\r\nCCRB\r\nThis App was created quickly to show of data exploration of a\r\nparticular data set for a Grant application. The App shows how leaflet\r\ncan be used to create a map and some of the interactions with it.\r\n\r\n",
+      "last_modified": "2022-05-19T06:55:44-04:00"
     }
   ],
   "collections": ["posts/posts.json"]

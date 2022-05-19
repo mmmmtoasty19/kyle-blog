@@ -14,4 +14,8 @@ title: "Projects"
 
 -   [COVID Explorer](https://kyleb.shinyapps.io/covid-explorer/)
 
+    - Note this is no longer in active development so the data is quite stale
+
 -   [NYPD CCRB](https://kyleb.shinyapps.io/nypd-ccrb-2020-shiny/)
+
+    - This App was created quickly to show of data exploration of a particular data set for a Grant application.  The App shows how leaflet can be used to create a map and some of the interactions with it. 
